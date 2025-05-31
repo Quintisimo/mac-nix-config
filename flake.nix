@@ -1,0 +1,153 @@
+{
+  description = "Macbook Nix Flake";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    mac-app-util.url = "github:hraban/mac-app-util";
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, homebrew-core, homebrew-cask, home-manager }:
+  let
+    configuration = { pkgs, ... }: {
+      # Allow unfree software
+      nixpkgs.config.allowUnfree = true;
+
+      # List packages installed in system profile. To search by name, run:
+      # $ nix-env -qaP | grep wget
+      environment.systemPackages = with pkgs; [ 
+	# shell
+	fish
+	fishPlugins.hydro
+
+	# cli tools
+        bat
+        eza
+        gh
+        gh-poi
+	terminal-notifier
+        azure-cli
+        azure-functions-core-tools
+        poetry
+
+	# applications
+	discord
+	the-unarchiver
+	_1password-gui
+	teams
+	slack
+	vscode
+	maccy
+      ];
+
+      homebrew = {
+	enable = true;
+	onActivation = {
+	  cleanup = "zap";
+	};
+	casks = [
+	  "teamviewer"
+          "ghostty"
+          "zen"
+          "orbstack"
+          "wrike"
+          "safeincloud-password-manager"
+          "yaak"
+	  "pearcleaner"
+	];
+	masApps = {
+	  amphetamine = 937984704;
+	  wifiman = 1385561119;
+	};
+      };
+
+      system.primaryUser = "quintisimo";
+      users = {
+	knownUsers = ["quintisimo"];
+	users.quintisimo = {
+          name = "quintisimo";
+          uid = 501;
+          home = "/Users/quintisimo";
+          shell = pkgs.fish;
+	};
+      };
+
+      # Necessary for using flakes on this system.
+      nix.settings.experimental-features = "nix-command flakes";
+
+      # Enable alternative shell support in nix-darwin.
+      programs.fish.enable = true;
+
+      # Set Git commit hash for darwin-version.
+      system.configurationRevision = self.rev or self.dirtyRev or null;
+
+      # Used for backwards compatibility, please read the changelog before changing.
+      # $ darwin-rebuild changelog
+      system.stateVersion = 6;
+
+      # The platform the configuration will be used on.
+      nixpkgs.hostPlatform = "aarch64-darwin";
+
+      # Add ability to used TouchID for sudo authentication
+      security.pam.services.sudo_local.touchIdAuth = true;
+    };
+  in
+  {
+    # Build darwin flake using:
+    # $ darwin-rebuild build --flake .#macbook
+    darwinConfigurations."macbook" = nix-darwin.lib.darwinSystem {
+      modules = [ 
+	configuration
+	mac-app-util.darwinModules.default 
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+	  home-manager.sharedModules = [
+            mac-app-util.homeManagerModules.default
+          ];
+          home-manager.users.quintisimo = ./home.nix;
+
+          # Optionally, use home-manager.extraSpecialArgs to pass
+          # arguments to home.nix
+	}
+	nix-homebrew.darwinModules.nix-homebrew
+        {
+          nix-homebrew = {
+            # Install Homebrew under the default prefix
+            enable = true;
+
+            # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
+            enableRosetta = true;
+
+            # User owning the Homebrew prefix
+            user = "quintisimo";
+
+            # Optional: Declarative tap management
+            taps = {
+              "homebrew/homebrew-core" = homebrew-core;
+              "homebrew/homebrew-cask" = homebrew-cask;
+            };
+
+            # Optional: Enable fully-declarative tap management
+            #
+            # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
+            mutableTaps = false;
+          };
+        }
+      ];
+    };
+  };
+}
