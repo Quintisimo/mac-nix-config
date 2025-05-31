@@ -17,13 +17,19 @@
     };
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, homebrew-core, homebrew-cask, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, homebrew-core, homebrew-cask, home-manager, nix-vscode-extensions }:
   let
     configuration = { pkgs, ... }: {
       # Allow unfree software
       nixpkgs.config.allowUnfree = true;
+
+      # Manage vscode extensions with nix
+      nixpkgs.overlays = [
+          nix-vscode-extensions.overlays.default
+      ];
 
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
