@@ -28,60 +28,64 @@
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages = with pkgs; [ 
-	# shell
-	fish
-	fishPlugins.hydro
+	      # shell
+	      fish
+	      fishPlugins.hydro
 
-	# cli tools
+	      # cli tools
         bat
         eza
         gh
         gh-poi
-	terminal-notifier
+	      terminal-notifier
         azure-cli
         azure-functions-core-tools
         poetry
 
-	# applications
-	discord
-	the-unarchiver
-	_1password-gui
-	teams
-	slack
-	vscode
-	maccy
+	      # applications
+	      discord
+	      the-unarchiver
+	      _1password-gui
+	      teams
+	      slack
+	      vscode
+        maccy
       ];
 
+      fonts.packages = with pkgs; [
+        nerd-fonts.space-mono
+      ];  
+
       homebrew = {
-	enable = true;
-	onActivation = {
-	  cleanup = "zap";
-	};
-	casks = [
-	  "teamviewer"
+	      enable = true;
+	      onActivation = {
+	        cleanup = "zap";
+	      };
+	      casks = [
+	        "teamviewer"
           "ghostty"
           "zen"
           "orbstack"
           "wrike"
           "safeincloud-password-manager"
           "yaak"
-	  "pearcleaner"
-	];
-	masApps = {
-	  amphetamine = 937984704;
-	  wifiman = 1385561119;
-	};
+	        "pearcleaner"
+	      ];
+	      masApps = {
+	        amphetamine = 937984704;
+	        wifiman = 1385561119;
+	      };
       };
 
       system.primaryUser = "quintisimo";
       users = {
-	knownUsers = ["quintisimo"];
-	users.quintisimo = {
+	      knownUsers = ["quintisimo"];
+	      users.quintisimo = {
           name = "quintisimo";
           uid = 501;
           home = "/Users/quintisimo";
           shell = pkgs.fish;
-	};
+	      };
       };
 
       # Necessary for using flakes on this system.
@@ -109,21 +113,21 @@
     # $ darwin-rebuild build --flake .#macbook
     darwinConfigurations."macbook" = nix-darwin.lib.darwinSystem {
       modules = [ 
-	configuration
-	mac-app-util.darwinModules.default 
+	      configuration
+	      mac-app-util.darwinModules.default 
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-	  home-manager.sharedModules = [
+	        home-manager.sharedModules = [
             mac-app-util.homeManagerModules.default
           ];
           home-manager.users.quintisimo = ./home.nix;
 
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix
-	}
-	nix-homebrew.darwinModules.nix-homebrew
+	      }
+	      nix-homebrew.darwinModules.nix-homebrew
         {
           nix-homebrew = {
             # Install Homebrew under the default prefix
