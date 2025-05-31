@@ -3,6 +3,16 @@
 {
   home = {
     stateVersion = "25.11";
+    file = {
+      # Use home.file as program.ghostty is currently broken
+      ghostty = {
+        target = ".config/ghostty/config";
+        text = ''
+          theme = catppuccin-mocha
+          font-family = SpaceMono Nerd Font Mono
+        '';
+      };
+    };
   };
 
   programs = {
@@ -17,11 +27,11 @@
     fish = {
       enable = true;
       interactiveShellInit = ''
-	set -g fish_greeting
-	fish_vi_key_bindings
+	      set -g fish_greeting
+	      fish_vi_key_bindings
       '';
       shellAliases = {
-	ls = "eza -la";
+	      ls = "eza -la";
         cat = "bat";
       };
       plugins = [
@@ -30,6 +40,14 @@
           src = pkgs.fishPlugins.hydro.src;
         }
       ];
+    };
+    vim = {
+      enable = true;
+      settings = {
+	      background = "dark";
+	      tabstop = 2;
+	      relativenumber = true;
+      };
     };
   };
 }
