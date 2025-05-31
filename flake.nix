@@ -26,6 +26,9 @@
       # Allow unfree software
       nixpkgs.config.allowUnfree = true;
 
+      # Automatic garbage collection
+      nix.gc.automatic = true;
+
       # Manage vscode extensions with nix
       nixpkgs.overlays = [
           nix-vscode-extensions.overlays.default
