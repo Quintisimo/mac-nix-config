@@ -22,6 +22,8 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, homebrew-core, homebrew-cask, home-manager, nix-vscode-extensions }:
   let
+    username = "quintisimo";
+    homeDirectory = "/Users/${username}";
     configuration = { pkgs, ... }: {
       # Allow unfree software
       nixpkgs.config.allowUnfree = true;
@@ -154,20 +156,21 @@
               }
             ];
             persistent-others = [
-              "/Users/quintisimo"
-              "/Users/quintisimo/Downloads"
+              "${homeDirectory}/Github/personal"
+              "${homeDirectory}/Github/work"
+              "${homeDirectory}/Downloads"
             ];
           };
         };
       };
 
-      system.primaryUser = "quintisimo";
+      system.primaryUser = username;
       users = {
-	      knownUsers = ["quintisimo"];
-	      users.quintisimo = {
-          name = "quintisimo";
+	      knownUsers = [username];
+	      users.${username} = {
+          name = username;
           uid = 501;
-          home = "/Users/quintisimo";
+          home = homeDirectory;
           shell = pkgs.fish;
 	      };
       };
@@ -206,7 +209,7 @@
 	        home-manager.sharedModules = [
             mac-app-util.homeManagerModules.default
           ];
-          home-manager.users.quintisimo = ./home.nix;
+          home-manager.users.${username} = ./home.nix;
 
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix
@@ -221,7 +224,7 @@
             enableRosetta = true;
 
             # User owning the Homebrew prefix
-            user = "quintisimo";
+            user = username;
 
             # Optional: Declarative tap management
             taps = {
