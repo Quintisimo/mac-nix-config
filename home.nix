@@ -21,8 +21,23 @@
     };
     git = {
       enable = true;
+      includes = [
+        {
+          condition  = "gitdir:~/Github/work/";
+          contents = {
+            user = {
+              email = "qcardozo@getlegaltech.com";
+            };
+          };
+        }
+      ];
       userName = "Quintus Cardozo";
-      userEmail = "qcardozo@getlegaltech.com";
+      userEmail = "quintuscardozo13@gmail.com";
+      extraConfig = {
+        core = {
+          editor = "vim";
+        };
+      };
     };
     fish = {
       enable = true;
