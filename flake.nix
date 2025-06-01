@@ -52,6 +52,8 @@
         azure-cli
         azure-functions-core-tools
         poetry
+        nodejs_22
+        pnpm
 
 	      # applications
 	      discord
