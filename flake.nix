@@ -90,6 +90,7 @@
 	      };
       };
 
+      # Dock Setup
       system = {
         defaults = {
           dock = {
