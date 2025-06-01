@@ -69,16 +69,18 @@
 	      enable = true;
 	      onActivation = {
 	        cleanup = "zap";
-	      };
-	      casks = [
-	        "teamviewer"
+        };
+        caskArgs = {
+          appdir = "/Applications/Homebrew Apps";
+        };
+        casks = [
+          "teamviewer"
           "ghostty"
           "zen"
           "orbstack"
           "wrike"
           "safeincloud-password-manager"
           "yaak"
-	        "pearcleaner"
 	      ];
 	      masApps = {
 	        amphetamine = 937984704;
