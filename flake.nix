@@ -38,31 +38,9 @@
 
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
-      environment.systemPackages = with pkgs; [ 
-	      # shell
-	      fish
-	      fishPlugins.hydro
-
-	      # cli tools
-        bat
-        eza
-        gh
-        gh-poi
-	      terminal-notifier
-        azure-cli
-        azure-functions-core-tools
-        poetry
-        nodejs_22
-        pnpm
-
-	      # applications
-	      discord
-	      the-unarchiver
-	      teams
-	      slack
-	      vscode
-        maccy
-      ];
+      environment.systemPackages = import ./packages/nix.nix { 
+        inherit pkgs; 
+      };
 
       fonts.packages = with pkgs; [
         nerd-fonts.space-mono
@@ -76,93 +54,16 @@
         caskArgs = {
           appdir = "/Applications/Homebrew Apps";
         };
-        casks = [
-          "teamviewer"
-          "ghostty"
-          "zen"
-          "orbstack"
-          "wrike"
-          "safeincloud-password-manager"
-          "yaak"
-          "1password"
-	      ];
-	      masApps = {
-	        amphetamine = 937984704;
-	        wifiman = 1385561119;
-	      };
+        casks = import ./packages/casks.nix;
+	      masApps = import ./packages/mas.nix;
       };
 
       # Dock Setup
       system = {
         defaults = {
-          dock = {
-            show-recents = false;
-            persistent-apps = [
-              {
-                app = "${pkgs.vscode.outPath}/Applications/Visual Studio Code.app";
-              }
-              {
-                app = "/Applications/Homebrew Apps/Ghostty.app";
-              }
-              {
-                app = "/Applications/Homebrew Apps/OrbStack.app";
-              }
-              {
-                spacer = {
-                  small = true;
-                };
-              }
-              {
-                app = "${pkgs.discord.outPath}/Applications/Discord.app";
-              }
-              {
-                app = "${pkgs.slack.outPath}/Applications/Slack.app";
-              }
-              {
-                app = "${pkgs.teams.outPath}/Applications/Teams.app";
-              }
-              {
-                app = "/Applications/Homebrew Apps/Wrike for Mac.app";
-              }
-              {
-                spacer = {
-                  small = true;
-                };
-              }
-              {
-                app = "/Applications/Homebrew Apps/1Password.app";
-              }
-              {
-                app = "/Applications/Homebrew Apps/SafeInCloud Password Manager.app";
-              }
-              {
-                spacer = {
-                  small = true;
-                };
-              }
-              {
-                app = "/Applications/Homebrew Apps/Zen.app";
-              }
-              {
-                app = "/Applications/Safari.app";
-              }
-              {
-                spacer = {
-                  small = true;
-                };
-              }
-              {
-                app = "/Applications/Homebrew Apps/Yaak.app";
-              }
-              {
-                app = "/Applications/TeamViewer.app";
-              }
-            ];
-            persistent-others = [
-              "${homeDirectory}/Github/personal"
-              "${homeDirectory}/Github/work"
-              "${homeDirectory}/Downloads"
-            ];
+          dock = import ./dock.nix { 
+            inherit  pkgs;
+            inherit homeDirectory;   
           };
         };
       };
