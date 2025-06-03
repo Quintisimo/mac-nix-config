@@ -80,7 +80,7 @@
   # Cron Agents
   launchd = {
     enable = true;
-    agents = import ./agents/agents.nix {
+    agents = import ./agents.nix {
       inherit pkgs;
     };
   };
