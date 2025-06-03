@@ -58,7 +58,6 @@
 	      # applications
 	      discord
 	      the-unarchiver
-	      _1password-gui
 	      teams
 	      slack
 	      vscode
@@ -85,6 +84,7 @@
           "wrike"
           "safeincloud-password-manager"
           "yaak"
+          "1password"
 	      ];
 	      masApps = {
 	        amphetamine = 937984704;
@@ -130,7 +130,7 @@
                 };
               }
               {
-                app = "${pkgs._1password-gui.outPath}/Applications/1Password.app";
+                app = "/Applications/Homebrew Apps/1Password.app";
               }
               {
                 app = "/Applications/Homebrew Apps/SafeInCloud Password Manager.app";
