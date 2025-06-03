@@ -2,8 +2,8 @@
 
 - Install nix using `curl -fsSL https://install.determinate.systems/nix | sh -s -- install`
 
-- Clone the repo into `~/.config/nix`
+- Clone the repo into `/etc/nix-darwin`
 
-- Setup nix-darwin using `sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake ~/.config/nix`
+- Setup nix-darwin using `sudo nix run nix-darwin/master#darwin-rebuild -- switch`
 
-- Apply chnages using `sudo darwin-rebuild --flake ~/.config/nix switch`
+- Apply chnages using `sudo darwin-rebuild switch`
