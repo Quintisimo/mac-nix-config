@@ -7,4 +7,5 @@
   "safeincloud-password-manager"
   "yaak"
   "1password"
+  "wifiman"
 ]
