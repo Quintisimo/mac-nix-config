@@ -51,9 +51,6 @@
 	      onActivation = {
 	        cleanup = "zap";
         };
-        caskArgs = {
-          appdir = "/Applications/Homebrew Apps";
-        };
         casks = import ./packages/casks.nix;
 	      masApps = import ./packages/mas.nix;
       };
