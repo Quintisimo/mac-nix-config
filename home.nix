@@ -65,6 +65,12 @@ in
           }
         ];
       };
+      poetry = {
+        enable = true;
+        settings = {
+          virtualenvs.in-project = true;
+        };
+      };
       vim = {
         enable = true;
         settings = {
