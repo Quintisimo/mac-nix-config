@@ -15,6 +15,16 @@
     };
   };
 
+  targets = {
+    darwin = {
+      defaults = {
+        "com.microsoft.VSCode" = {
+          ApplePressAndHoldEnabled = false;
+        };
+      };
+    };
+  };
+
   programs = {
     home-manager = {
       enable = true;
