@@ -1,8 +1,7 @@
 { pkgs }:
 
 with pkgs; [
-  # shell
-  fish
+  # shell plugins
   fishPlugins.hydro
 
   # cli tools
@@ -13,7 +12,6 @@ with pkgs; [
   terminal-notifier
   azure-cli
   azure-functions-core-tools
-  poetry
   nodejs_22
   pnpm
 
@@ -22,6 +20,5 @@ with pkgs; [
   the-unarchiver
   teams
   slack
-  vscode
   maccy
 ]
