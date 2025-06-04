@@ -142,6 +142,20 @@
             mutableTaps = false;
           };
         }
+        {
+          system = {
+            # Hide trampoline folder created by mac-app-util
+            activationScripts = {
+              postActivation = {
+                text = ''
+                  dir="/Applications/Nix Trampolines"
+                  echo "Hiding $dir"
+                  chflags hidden "$dir"
+                '';
+              };
+            };
+          };
+        }
       ];
     };
   };
