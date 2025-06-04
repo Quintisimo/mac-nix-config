@@ -1,97 +1,98 @@
 { pkgs, ... }:
 
-{
-  home = {
-    stateVersion = "25.11";
-    file = {
-      # Use home.file as program.ghostty is currently broken
-      ghostty = {
-        target = ".config/ghostty/config";
-        text = ''
-          theme = catppuccin-mocha
-          font-family = SpaceMono Nerd Font Mono
-        '';
-      };
-    };
-  };
-
-  targets = {
-    darwin = {
-      defaults = {
-        "com.microsoft.VSCode" = {
-          ApplePressAndHoldEnabled = false;
+let
+  fontFamily = "FiraCode Nerd Font Mono";
+in
+  {
+    home = {
+      stateVersion = "25.11";
+      file = {
+        # Use home.file as program.ghostty is currently broken
+        ghostty = {
+          target = ".config/ghostty/config";
+          text = ''
+            theme = catppuccin-mocha
+            font-family = ${fontFamily}
+          '';
         };
       };
     };
-  };
 
-  programs = {
-    home-manager = {
-      enable = true;
+    targets = {
+      darwin = {
+        defaults = {
+          "com.microsoft.VSCode" = {
+            ApplePressAndHoldEnabled = false;
+          };
+        };
+      };
     };
-    git = {
-      enable = true;
-      includes = [
-        {
-          condition  = "gitdir:~/Github/work/";
-          contents = {
-            user = {
-              email = "qcardozo@getlegaltech.com";
+
+    programs = {
+      home-manager = {
+        enable = true;
+      };
+      git = {
+        enable = true;
+        includes = [
+          {
+            condition  = "gitdir:~/Github/work/";
+            contents = {
+              user = {
+                email = "qcardozo@getlegaltech.com";
+              };
+            };
+          }
+        ];
+        userName = "Quintus Cardozo";
+        userEmail = "quintuscardozo13@gmail.com";
+      };
+      fish = {
+        enable = true;
+        interactiveShellInit = ''
+          set -g fish_greeting
+          set -gx EDITOR vim
+          fish_vi_key_bindings
+        '';
+        shellAliases = {
+          ls = "eza -la";
+          cat = "bat";
+        };
+        plugins = [
+          {
+            name = "hydro";
+            src = pkgs.fishPlugins.hydro.src;
+          }
+        ];
+      };
+      vim = {
+        enable = true;
+        settings = {
+          background = "dark";
+          tabstop = 2;
+          relativenumber = true;
+        };
+      };
+      vscode = {
+        enable = true;
+        profiles = {
+          default = {
+            extensions = import ./vscode/extensions.nix { 
+              inherit pkgs;
+            };
+            userSettings = import ./vscode/settings.nix {
+              inherit fontFamily;
             };
           };
-        }
-      ];
-      userName = "Quintus Cardozo";
-      userEmail = "quintuscardozo13@gmail.com";
-      extraConfig = {
-        core = {
-          editor = "vim";
         };
       };
     };
-    fish = {
+    
+    # Cron Agents
+    launchd = {
       enable = true;
-      interactiveShellInit = ''
-	      set -g fish_greeting
-	      fish_vi_key_bindings
-      '';
-      shellAliases = {
-	      ls = "eza -la";
-        cat = "bat";
-      };
-      plugins = [
-        {
-          name = "hydro";
-          src = pkgs.fishPlugins.hydro.src;
-        }
-      ];
-    };
-    vim = {
-      enable = true;
-      settings = {
-	      background = "dark";
-	      tabstop = 2;
-	      relativenumber = true;
+      agents = import ./agents.nix {
+        inherit pkgs;
       };
     };
-    vscode = {
-      enable = true;
-      profiles = {
-        default = {
-          extensions = import ./vscode/extensions.nix { 
-            inherit pkgs;
-          };
-          userSettings = import ./vscode/settings.nix;
-        };
-      };
-    };
-  };
-  
-  # Cron Agents
-  launchd = {
-    enable = true;
-    agents = import ./agents.nix {
-      inherit pkgs;
-    };
-  };
-}
+  }

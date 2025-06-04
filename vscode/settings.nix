@@ -1,5 +1,7 @@
+{ fontFamily }:
+
 {
-  "editor.fontFamily" = "SpaceMono Nerdd Font Mono";
+  "editor.fontFamily" = fontFamily;
   "editor.fontLigatures" = true;
   "editor.cursorSmoothCaretAnimation" = "on";
   "editor.fontVariations" = true;

@@ -43,7 +43,7 @@
       };
 
       fonts.packages = with pkgs; [
-        nerd-fonts.space-mono
+        nerd-fonts.fira-code
       ];  
 
       homebrew = {
