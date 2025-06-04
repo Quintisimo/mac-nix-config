@@ -58,17 +58,27 @@
 	      masApps = import ./packages/mas.nix;
       };
 
-      # Dock Setup
       system = {
+        # Set Git commit hash for darwin-version
+        configurationRevision = self.rev or self.dirtyRev or null;
+        # Used for backwards compatibility, please read the changelog before changing.
+        # $ darwin-rebuild changelog
+        stateVersion = 6;
+        primaryUser = username;
         defaults = {
+          # Dock Setup
           dock = import ./dock.nix { 
             inherit  pkgs;
             inherit homeDirectory;   
           };
+          # Set key repeat speed to fastest and delay key repeat to shortest
+          NSGlobalDomain = {
+            InitialKeyRepeat = 15;
+            KeyRepeat = 2;
+          };
         };
       };
 
-      system.primaryUser = username;
       users = {
 	      knownUsers = [username];
 	      users.${username} = {
@@ -84,13 +94,6 @@
 
       # Enable alternative shell support in nix-darwin.
       programs.fish.enable = true;
-
-      # Set Git commit hash for darwin-version.
-      system.configurationRevision = self.rev or self.dirtyRev or null;
-
-      # Used for backwards compatibility, please read the changelog before changing.
-      # $ darwin-rebuild changelog
-      system.stateVersion = 6;
 
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
