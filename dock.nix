@@ -7,10 +7,10 @@
       app = "${pkgs.vscode.outPath}/Applications/Visual Studio Code.app";
     }
     {
-      app = "/Applications/Homebrew Apps/Ghostty.app";
+      app = "/Applications/Ghostty.app";
     }
     {
-      app = "/Applications/Homebrew Apps/OrbStack.app";
+      app = "/Applications/OrbStack.app";
     }
     {
       spacer = {
@@ -27,7 +27,7 @@
       app = "${pkgs.teams.outPath}/Applications/Teams.app";
     }
     {
-      app = "/Applications/Homebrew Apps/Wrike for Mac.app";
+      app = "/Applications/Wrike for Mac.app";
     }
     {
       spacer = {
@@ -35,10 +35,10 @@
       };
     }
     {
-      app = "/Applications/Homebrew Apps/1Password.app";
+      app = "/Applications/1Password.app";
     }
     {
-      app = "/Applications/Homebrew Apps/SafeInCloud Password Manager.app";
+      app = "/Applications/SafeInCloud Password Manager.app";
     }
     {
       spacer = {
@@ -46,7 +46,7 @@
       };
     }
     {
-      app = "/Applications/Homebrew Apps/Zen.app";
+      app = "/Applications/Zen.app";
     }
     {
       app = "/Applications/Safari.app";
@@ -57,7 +57,7 @@
       };
     }
     {
-      app = "/Applications/Homebrew Apps/Yaak.app";
+      app = "/Applications/Yaak.app";
     }
     {
       app = "/Applications/TeamViewer.app";
