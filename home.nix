@@ -1,9 +1,18 @@
-{ pkgs, ... }:
+{ pkgs, config, homeDirectory, ... }:
 
 let
   fontFamily = "FiraCode Nerd Font Mono";
 in
   {
+    age = {
+      identityPaths = [ "${homeDirectory}/.ssh/id_ed25519" ];
+      secrets = {
+        fish_env = {
+          file = ./secrets/secrets.age;
+        };
+      };
+    };
+
     home = {
       stateVersion = "25.11";
       file = {
@@ -53,6 +62,7 @@ in
           set -g fish_greeting
           set -gx EDITOR vim
           fish_vi_key_bindings
+          source ${config.age.secrets.fish_env.path}
         '';
         shellAliases = {
           ls = "eza -la";

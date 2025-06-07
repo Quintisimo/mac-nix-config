@@ -3,8 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     homebrew-core = {
@@ -15,12 +17,15 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    agenix.url = "github:ryantm/agenix";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, homebrew-core, homebrew-cask, home-manager, nix-vscode-extensions }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, homebrew-core, homebrew-cask, home-manager, agenix, nix-vscode-extensions }:
   let
     username = "quintisimo";
     homeDirectory = "/Users/${username}";
@@ -112,7 +117,11 @@
           home-manager.useUserPackages = true;
 	        home-manager.sharedModules = [
             mac-app-util.homeManagerModules.default
+            agenix.homeManagerModules.default
           ];
+          home-manager.extraSpecialArgs = {
+            inherit homeDirectory;
+          };
           home-manager.users.${username} = ./home.nix;
 
           # Optionally, use home-manager.extraSpecialArgs to pass
