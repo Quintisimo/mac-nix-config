@@ -42,4 +42,5 @@
   "vim.highlightedyank.enable" = true;
   "vim.smartRelativeLine" = true;
   "vim.useSystemClipboard" = true;
+  "docker.extension.enableComposeLanguageServer" = false;
 }
