@@ -4,6 +4,9 @@ with pkgs; [
   # shell plugins
   fishPlugins.hydro
 
+  # Needed for vscode bicep extension 
+  dotnetCorePackages.runtime_8_0-bin
+
   # cli tools
   bat
   eza
