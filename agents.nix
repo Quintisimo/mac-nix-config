@@ -44,7 +44,7 @@ in
         StartCalendarInterval = [
           {
             Minute = 0;
-            Hour = 9;
+            Hour = 10;
             Day = 2;
           }
         ];
@@ -62,7 +62,7 @@ in
         StartCalendarInterval = [
           {
             Minute = 0;
-            Hour = 9;
+            Hour = 10;
             Day = 2;
           }
         ];
