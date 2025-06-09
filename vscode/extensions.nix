@@ -12,6 +12,7 @@ with pkgs.vscode-marketplace; [
   github.vscode-github-actions
   mhutchie.git-graph
   mikestead.dotenv
+  ms-dotnettools.vscode-dotnet-runtime
   ms-azuretools.vscode-bicep
   ms-python.debugpy
   ms-python.python

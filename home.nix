@@ -98,6 +98,7 @@ in
             };
             userSettings = import ./vscode/settings.nix {
               inherit fontFamily;
+              dotnetPath = "${pkgs.dotnetCorePackages.runtime_8_0-bin.src}/bin/dotnet";
             };
           };
         };

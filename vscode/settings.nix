@@ -1,6 +1,7 @@
-{ fontFamily }:
+{ fontFamily, dotnetPath }:
 
 {
+  "dotnetAcquisitionExtension.sharedExistingDotnetPath" = dotnetPath;
   "editor.fontFamily" = fontFamily;
   "editor.fontLigatures" = true;
   "editor.cursorSmoothCaretAnimation" = "on";
