@@ -29,7 +29,7 @@
   let
     username = "quintisimo";
     homeDirectory = "/Users/${username}";
-    configuration = { pkgs, ... }: {
+    configuration = { pkgs, config, ... }: {
       # Allow unfree software
       nixpkgs.config.allowUnfree = true;
 
@@ -52,7 +52,8 @@
       ];  
 
       homebrew = {
-	      enable = true;
+        enable = true;
+        taps = builtins.attrNames config.nix-homebrew.taps;
 	      onActivation = {
 	        cleanup = "zap";
         };
