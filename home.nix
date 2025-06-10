@@ -43,6 +43,10 @@ in
       };
       git = {
         enable = true;
+        aliases = {
+          fixup = "!sh -c 'git add . && git commit --fixup=$1 && git rebase --autosquash $1~1'";
+          amend = "!sh -c 'git add . && git commit --amend --no-edit'";
+        };
         includes = [
           {
             condition  = "gitdir:~/Github/work/";
