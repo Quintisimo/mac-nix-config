@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, homeDirectory }:
 
 let
   createAgent = { pkgs, jobs }:
@@ -6,6 +6,8 @@ let
       enable = true;
       config = {
         inherit StartCalendarInterval;
+        StandardErrorPath = "${homeDirectory}/Library/Logs/${name}.error.log";
+        StandardOutPath = "${homeDirectory}/Library/Logs/${name}.out.log";
         Program = "${pkgs.writeShellApplication {
           inherit name text runtimeInputs;
         }}/bin/${name}";
@@ -44,7 +46,7 @@ in
         StartCalendarInterval = [
           {
             Minute = 0;
-            Hour = 10;
+            Hour = 12;
             Day = 2;
           }
         ];
@@ -62,7 +64,7 @@ in
         StartCalendarInterval = [
           {
             Minute = 0;
-            Hour = 10;
+            Hour = 12;
             Day = 2;
           }
         ];
