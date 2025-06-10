@@ -110,6 +110,7 @@ in
       enable = true;
       agents = import ./agents.nix {
         inherit pkgs;
+        inherit homeDirectory;
       };
     };
   }
