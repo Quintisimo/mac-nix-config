@@ -18,6 +18,9 @@
       };
     }
     {
+      app = "/System/Applications/Mail.app";
+    }
+    {
       app = "${pkgs.discord.outPath}/Applications/Discord.app";
     }
     {
@@ -25,6 +28,14 @@
     }
     {
       app = "${pkgs.teams.outPath}/Applications/Teams.app";
+    }
+    {
+      spacer = {
+        small = true;
+      };
+    }
+    {
+      app = "/System/Applications/Calendar.app";
     }
     {
       app = "/Applications/Wrike for Mac.app";
