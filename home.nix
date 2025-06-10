@@ -73,6 +73,14 @@ in
             name = "hydro";
             src = pkgs.fishPlugins.hydro.src;
           }
+          {
+            name = "z";
+            src = pkgs.fishPlugins.z.src;
+          }
+          {
+            name = "bang-bang";
+            src = pkgs.fishPlugins.bang-bang.src;
+          }
         ];
       };
       poetry = {
