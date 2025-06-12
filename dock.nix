@@ -27,7 +27,7 @@
       app = "${pkgs.slack.outPath}/Applications/Slack.app";
     }
     {
-      app = "${pkgs.teams.outPath}/Applications/Teams.app";
+      app = "/Applications/Microsoft Teams.app";
     }
     {
       spacer = {

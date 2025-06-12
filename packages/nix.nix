@@ -23,7 +23,6 @@ with pkgs; [
   # applications
   discord
   the-unarchiver
-  teams
   slack
   maccy
 ]
