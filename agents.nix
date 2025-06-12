@@ -1,12 +1,24 @@
 { pkgs, homeDirectory }:
 
 let
+  waitForNetwork = ''
+    while ! ping -c1 -W1 1.1.1.1 &> /dev/null ; do
+      sleep 1
+    done
+  '';
+  runOnTuesday = ''
+    tuesday=2
+    day=$(date +%u)
+
+    if [ "$day" -ne "$tuesday" ]; then
+      exit 0
+    fi
+  '';
   createAgent = { pkgs, jobs }:
-    builtins.mapAttrs (name: { text, runtimeInputs ? [], StartCalendarInterval ? null, RunAtLoad ? null }: {
+    builtins.mapAttrs (name: { text, runtimeInputs ? [] }: {
       enable = true;
       config = {
-        inherit StartCalendarInterval;
-        inherit RunAtLoad;
+        RunAtLoad = true;
         StandardErrorPath = "${homeDirectory}/Library/Logs/${name}.error.log";
         StandardOutPath = "${homeDirectory}/Library/Logs/${name}.out.log";
         Program = "${pkgs.writeShellApplication {
@@ -24,6 +36,9 @@ in
           pkgs.terminal-notifier
         ];
         text = ''
+          ${runOnTuesday}
+          ${waitForNetwork}
+
           orgs=$(gh org list)
           open_pr_repos=""
 
@@ -44,35 +59,23 @@ in
             terminal-notifier -title "Open dependabot prs" -message "$open_pr_repo" -open "$url"
           done
         '';
-        StartCalendarInterval = [
-          {
-            Minute = 0;
-            Hour = 12;
-            Day = 2;
-          }
-        ];
       };
       prune-git-repos = {
         runtimeInputs = [
           pkgs.gh-poi
         ];
         text = ''
+          ${runOnTuesday}
+          ${waitForNetwork}
+
           find ~/Github -type d -name ".git" | while read -r dir; do
             repo_dir=$(dirname "$dir")
             cd "$repo_dir" && gh-poi
           done
         '';
-        StartCalendarInterval = [
-          {
-            Minute = 0;
-            Hour = 12;
-            Day = 2;
-          }
-        ];
       };
       mail = {
         text = "open -j /System/Applications/Mail.app";
-        RunAtLoad = true;
       };
     };
   }
