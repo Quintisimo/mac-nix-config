@@ -1,4 +1,5 @@
 [
+  "microsoft-teams"
   "teamviewer"
   "ghostty"
   "zen"
