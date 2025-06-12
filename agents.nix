@@ -2,10 +2,11 @@
 
 let
   createAgent = { pkgs, jobs }:
-    builtins.mapAttrs (name: { text, runtimeInputs, StartCalendarInterval }: {
+    builtins.mapAttrs (name: { text, runtimeInputs ? [], StartCalendarInterval ? null, RunAtLoad ? null }: {
       enable = true;
       config = {
         inherit StartCalendarInterval;
+        inherit RunAtLoad;
         StandardErrorPath = "${homeDirectory}/Library/Logs/${name}.error.log";
         StandardOutPath = "${homeDirectory}/Library/Logs/${name}.out.log";
         Program = "${pkgs.writeShellApplication {
@@ -68,6 +69,10 @@ in
             Day = 2;
           }
         ];
+      };
+      mail = {
+        text = "open -j /System/Applications/Mail.app";
+        RunAtLoad = true;
       };
     };
   }
