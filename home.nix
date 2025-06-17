@@ -44,6 +44,8 @@ in
       git = {
         enable = true;
         aliases = {
+          update = "rebase origin/main";
+          force-push = "push --force-with-lease";
           fixup = "!sh -c 'git add . && git commit --fixup=$1 && git rebase --autosquash $1~1'";
           amend = "!sh -c 'git add . && git commit --amend --no-edit'";
         };
