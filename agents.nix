@@ -42,11 +42,14 @@ in
           orgs=$(gh org list)
           open_pr_repos=""
 
+          pr_author=app/dependabot
+          pr_state=open
+
           for org in $orgs; do
             repos=$(gh repo list "$org" --json nameWithOwner -q '.[].nameWithOwner')
 
             for repo in $repos; do
-              repo_pr_count=$(gh pr list --author app/dependabot --state open --repo "$repo" --json url -q '.[].url' | wc -l)
+              repo_pr_count=$(gh pr list --author "$pr_author" --state "$pr_state" --repo "$repo" --json url -q '.[].url' | wc -l)
 
               if [ "$repo_pr_count" -gt 0 ]; then
                 open_pr_repos+="$repo"$'\n'
@@ -54,7 +57,10 @@ in
             done
           done
 
-            for open_pr_repo in $open_pr_repos; do
+          for open_pr_repo in $open_pr_repos; do
+            # latest_pr=$(gh pr list --limit 1 --author "$pr_author" --state "$pr_state" --repo "$open_pr_repo" --search "sort:updated-desc" --json number -q '.[].number')
+            # gh pr comment "$latest_pr" --body "@dependabot recreate" --repo "$open_pr_repo"
+
             url="https://github.com/$open_pr_repo/pulls"
             terminal-notifier -title "Open dependabot prs" -message "$open_pr_repo" -open "$url"
           done
