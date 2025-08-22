@@ -20,6 +20,7 @@ with pkgs; [
   nodejs_22
   pnpm
   nodePackages.vercel
+  cloudflared
 
   # applications
   discord
