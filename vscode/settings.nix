@@ -44,4 +44,7 @@
   "vim.smartRelativeLine" = true;
   "vim.useSystemClipboard" = true;
   "docker.extension.enableComposeLanguageServer" = false;
+  "[astro]" = {
+    "editor.defaultFormatter" = "astro-build.astro-vscode";
+  };
 }
