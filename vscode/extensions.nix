@@ -24,4 +24,6 @@ with pkgs.vscode-marketplace; [
   vercel.turbo-vsc
   vscodevim.vim
   yoavbls.pretty-ts-errors
+  astro-build.astro-vscode
+  antfu.unocss
 ]
