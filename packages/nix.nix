@@ -21,6 +21,7 @@ with pkgs; [
   pnpm
   nodePackages.vercel
   cloudflared
+  claude-code
 
   # applications
   discord
