@@ -61,6 +61,11 @@ in
         ];
         userName = "Quintus Cardozo";
         userEmail = "quintuscardozo13@gmail.com";
+        extraConfig = {
+          init = {
+            defaultBranch = "main";
+          };
+        };
       };
       fish = {
         enable = true;
