@@ -9,6 +9,5 @@
   "yaak"
   "1password"
   "wifiman"
-  "yt-music"
   "postico"
 ]
