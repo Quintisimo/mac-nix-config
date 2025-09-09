@@ -26,4 +26,5 @@ with pkgs.vscode-marketplace; [
   yoavbls.pretty-ts-errors
   astro-build.astro-vscode
   antfu.unocss
+  bradlc.vscode-tailwindcss
 ]

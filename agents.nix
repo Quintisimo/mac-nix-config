@@ -59,7 +59,10 @@ in
 
           for open_pr_repo in $open_pr_repos; do
             # latest_pr=$(gh pr list --limit 1 --author "$pr_author" --state "$pr_state" --repo "$open_pr_repo" --search "sort:updated-desc" --json number -q '.[].number')
-            # gh pr comment "$latest_pr" --body "@dependabot recreate" --repo "$open_pr_repo"
+            
+            # if [ -n "$latest_pr" ]; then
+              # gh pr comment "$latest_pr" --body "@dependabot recreate" --repo "$open_pr_repo"
+            # fi
 
             url="https://github.com/$open_pr_repo/pulls"
             terminal-notifier -title "Open dependabot prs" -message "$open_pr_repo" -open "$url"
