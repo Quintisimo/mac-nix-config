@@ -84,7 +84,21 @@ in
         '';
       };
       mail = {
-        text = "open -j /System/Applications/Mail.app";
+        text = ''
+          friday=5
+          day=$(date +%u)
+
+          start=9
+          end=17
+          time=$(date +%k)
+          
+          # Don't open mail app if weekend or outside work hours
+          if [[ "$day" -gt "$friday" || "$time" -lt "$start" || "$time" -gt "$end" ]]; then
+            exit 0
+          fi
+
+          open -j /System/Applications/Mail.app
+        '';
       };
     };
   }
