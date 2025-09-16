@@ -10,4 +10,5 @@
   "1password"
   "wifiman"
   "postico"
+  "swish"
 ]
