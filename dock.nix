@@ -70,9 +70,6 @@
     {
       app = "/Applications/Yaak.app";
     }
-    {
-      app = "/Applications/TeamViewer.app";
-    }
   ];
   persistent-others = [
     "${homeDirectory}/Github/personal"
