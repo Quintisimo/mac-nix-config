@@ -38,9 +38,6 @@
       app = "/System/Applications/Calendar.app";
     }
     {
-      app = "/Applications/Wrike for Mac.app";
-    }
-    {
       spacer = {
         small = true;
       };

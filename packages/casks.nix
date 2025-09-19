@@ -3,7 +3,6 @@
   "ghostty"
   "zen"
   "orbstack"
-  "wrike"
   "safeincloud-password-manager"
   "yaak"
   "1password"
