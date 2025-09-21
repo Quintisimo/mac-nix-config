@@ -76,6 +76,8 @@
           };
           # Set key repeat speed to fastest and delay key repeat to shortest
           NSGlobalDomain = {
+            AppleInterfaceStyle = "Dark";
+            AppleIconAppearanceTheme = "RegularDark";
             InitialKeyRepeat = 15;
             KeyRepeat = 2;
           };
