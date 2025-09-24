@@ -69,6 +69,7 @@ in
       };
       fish = {
         enable = true;
+        generateCompletions = true;
         interactiveShellInit = ''
           set -g fish_greeting
           set -gx EDITOR vim

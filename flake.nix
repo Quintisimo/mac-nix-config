@@ -74,12 +74,21 @@
             inherit  pkgs;
             inherit homeDirectory;   
           };
-          # Set key repeat speed to fastest and delay key repeat to shortest
           NSGlobalDomain = {
             AppleInterfaceStyle = "Dark";
             AppleIconAppearanceTheme = "RegularDark";
+            # Set key repeat speed to fastest and delay key repeat to shortest
             InitialKeyRepeat = 15;
             KeyRepeat = 2;
+          };
+          finder = {
+            AppleShowAllExtensions = true;
+            AppleShowAllFiles = true;
+            FXPreferredViewStyle = "Nlsv";
+            NewWindowTarget = "Other";
+            NewWindowTargetPath = "file://${homeDirectory}/Github";
+            ShowPathbar = true;
+            ShowStatusBar = true;
           };
         };
       };
