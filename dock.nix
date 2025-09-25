@@ -1,6 +1,8 @@
 { pkgs, homeDirectory  }:
 
 {
+  wvous-bl-corner = 13;
+  wvous-br-corner = 2;
   show-recents = false;
   persistent-apps = [
     {
