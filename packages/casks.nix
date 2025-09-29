@@ -11,4 +11,5 @@
   "discord"
   "slack"
   "maccy"
+  "pearcleaner"
 ]
