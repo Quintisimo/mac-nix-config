@@ -8,4 +8,7 @@
   "1password"
   "wifiman"
   "swish"
+  "discord"
+  "slack"
+  "maccy"
 ]

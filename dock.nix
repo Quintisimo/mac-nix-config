@@ -23,10 +23,10 @@
       app = "/System/Applications/Mail.app";
     }
     {
-      app = "${pkgs.discord.outPath}/Applications/Discord.app";
+      app = "/Applications/Discord.app";
     }
     {
-      app = "${pkgs.slack.outPath}/Applications/Slack.app";
+      app = "/Applications/Slack.app";
     }
     {
       app = "/Applications/Microsoft Teams.app";

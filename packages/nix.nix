@@ -22,9 +22,4 @@ with pkgs; [
   nodePackages.vercel
   cloudflared
   claude-code
-
-  # applications
-  discord
-  slack
-  maccy
 ]
