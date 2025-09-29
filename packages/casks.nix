@@ -7,6 +7,5 @@
   "yaak"
   "1password"
   "wifiman"
-  "postico"
   "swish"
 ]
