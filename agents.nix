@@ -83,7 +83,7 @@ in
           done
         '';
       };
-      mail = {
+      work = {
         text = ''
           friday=5
           day=$(date +%u)
@@ -98,6 +98,8 @@ in
           fi
 
           open -j /System/Applications/Mail.app
+          open -j /Applications/Slack.app
+          open -j /Applications/Discord.app
         '';
       };
     };
