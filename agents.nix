@@ -6,11 +6,11 @@ let
       sleep 1
     done
   '';
-  runOnTuesday = ''
-    tuesday=2
+  runOnThursday = ''
+    thursday=4
     day=$(date +%u)
 
-    if [ "$day" -ne "$tuesday" ]; then
+    if [ "$day" -ne "$thursday" ]; then
       exit 0
     fi
   '';
@@ -36,7 +36,7 @@ in
           pkgs.terminal-notifier
         ];
         text = ''
-          ${runOnTuesday}
+          ${runOnThursday}
           ${waitForNetwork}
 
           orgs=$(gh org list)
@@ -74,7 +74,7 @@ in
           pkgs.gh-poi
         ];
         text = ''
-          ${runOnTuesday}
+          ${runOnThursday}
           ${waitForNetwork}
 
           find ~/Github -type d -name ".git" | while read -r dir; do
