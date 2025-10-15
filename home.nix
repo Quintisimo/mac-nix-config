@@ -24,6 +24,63 @@ in
             font-family = ${fontFamily}
           '';
         };
+        zed = {
+          target = ".config/zed/settings.json";
+          text = ''
+            {
+              "agent": {
+                "default_model": {
+                  "provider": "copilot_chat",
+                  "model": "gpt-4.1"
+                },
+                "model_parameters": []
+              },
+              "icon_theme": "Catppuccin Mocha",
+              "buffer_font_family": "FiraCode Nerd Font Mono",
+              "ui_font_family": "FiraCode Nerd Font Mono",
+              "project_panel": {
+                "auto_fold_dirs": false
+              },
+              "autosave": "on_focus_change",
+              "file_types": {
+                "ignore": [".funcignore"]
+              },
+              "tab_size": 2,
+              "relative_line_numbers": true,
+              "gutter": {
+                "line_numbers": true
+              },
+              "minimap": {
+                "show": "auto"
+              },
+              "base_keymap": "VSCode",
+              "telemetry": {
+                "diagnostics": false,
+                "metrics": false
+              },
+              "vim_mode": true,
+              "ui_font_size": 14,
+              "buffer_font_size": 12,
+              "theme": {
+                "mode": "system",
+                "light": "Ayu Light",
+                "dark": "Catppuccin Mocha"
+              },
+              "title_bar": {
+                "show_sign_in": false
+              },
+              "collaboration_panel": {
+                "button": false
+              },
+              "notification_panel": {
+                "button": false
+              },
+              "features": {
+                "edit_prediction_provider": "copilot"
+              }
+            }
+          '';
+        };
       };
     };
 
@@ -107,20 +164,6 @@ in
           background = "dark";
           tabstop = 2;
           relativenumber = true;
-        };
-      };
-      vscode = {
-        enable = true;
-        profiles = {
-          default = {
-            extensions = import ./vscode/extensions.nix { 
-              inherit pkgs;
-            };
-            userSettings = import ./vscode/settings.nix {
-              inherit fontFamily;
-              dotnetPath = "${pkgs.dotnetCorePackages.runtime_8_0-bin.src}/bin/dotnet";
-            };
-          };
         };
       };
     };

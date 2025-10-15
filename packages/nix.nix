@@ -6,7 +6,7 @@ with pkgs; [
   fishPlugins.z
   fishPlugins.bang-bang
 
-  # Needed for vscode bicep extension 
+  # Needed for zed bicep extension 
   dotnetCorePackages.runtime_8_0-bin
 
   # cli tools

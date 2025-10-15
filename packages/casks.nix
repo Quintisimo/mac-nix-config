@@ -12,4 +12,6 @@
   "slack"
   "maccy"
   "pearcleaner"
+  "zed"
+  "gitup-app"
 ]
