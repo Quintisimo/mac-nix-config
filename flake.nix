@@ -22,10 +22,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix.url = "github:ryantm/agenix";
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, homebrew-core, homebrew-cask, home-manager, agenix, nix-vscode-extensions }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, homebrew-core, homebrew-cask, home-manager, agenix }:
   let
     username = "quintisimo";
     homeDirectory = "/Users/${username}";
@@ -35,11 +34,6 @@
 
       # Automatic garbage collection
       nix.gc.automatic = true;
-
-      # Manage vscode extensions with nix
-      nixpkgs.overlays = [
-          nix-vscode-extensions.overlays.default
-      ];
 
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget

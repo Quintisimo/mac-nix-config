@@ -6,7 +6,10 @@
   show-recents = false;
   persistent-apps = [
     {
-      app = "${pkgs.vscode.outPath}/Applications/Visual Studio Code.app";
+      app = "/Applications/Zed.app";
+    }
+    {
+      app = "/Applications/GitUp.app";
     }
     {
       app = "/Applications/Ghostty.app";
