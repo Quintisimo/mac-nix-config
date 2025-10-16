@@ -35,6 +35,9 @@
       app = "/Applications/Microsoft Teams.app";
     }
     {
+      app = "/System/Applications/Messages.app";
+    }
+    {
       spacer = {
         small = true;
       };
@@ -60,9 +63,6 @@
     }
     {
       app = "/Applications/Zen.app";
-    }
-    {
-      app = "/Applications/Safari.app";
     }
     {
       spacer = {
