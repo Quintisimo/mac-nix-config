@@ -101,6 +101,7 @@ in
       git = {
         enable = true;
         aliases = {
+          undo = "reset --soft HEAD~1";
           update = "rebase origin/main";
           force-push = "push --force-with-lease";
           fixup = "!sh -c 'git add . && git commit --fixup=$1 && git rebase --autosquash $1~1'";
