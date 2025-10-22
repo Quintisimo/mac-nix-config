@@ -6,8 +6,8 @@ with pkgs; [
   fishPlugins.z
   fishPlugins.bang-bang
 
-  # Needed for zed bicep extension 
-  dotnetCorePackages.runtime_8_0-bin
+  # Needed for zed bicep extension and azure-functions-core-tools
+  dotnetCorePackages.aspnetcore_8_0-bin
 
   # cli tools
   bat
