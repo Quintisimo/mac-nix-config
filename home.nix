@@ -132,6 +132,7 @@ in
           set -g fish_greeting
           set -gx EDITOR vim
           fish_vi_key_bindings
+          fish_add_path $HOME/go/bin
           source ${config.age.secrets.fish_env.path}
         '';
         shellAliases = {

@@ -22,4 +22,6 @@ with pkgs; [
   nodePackages.vercel
   cloudflared
   claude-code
+  go
+  pkl
 ]
