@@ -185,6 +185,38 @@
         "type": "github"
       }
     },
+    "homebrew-functions": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1761936117,
+        "narHash": "sha256-v17D/e6tFOxZ7W/hxTiezWC0R5OKSPPW4qX0d+A0e/I=",
+        "owner": "azure",
+        "repo": "homebrew-functions",
+        "rev": "b130bd1cc6a337a911a09c20633b5ceeb016983e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "azure",
+        "repo": "homebrew-functions",
+        "type": "github"
+      }
+    },
+    "homebrew-mssql": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1742405594,
+        "narHash": "sha256-aDS50fQjUaP+7w4c5E6LjMWlgQDpALsXqlgDH+8Dc/U=",
+        "owner": "microsoft",
+        "repo": "homebrew-mssql-release",
+        "rev": "5cbe600942a99a3f50eef3d1e3b233f2cad492f1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "microsoft",
+        "repo": "homebrew-mssql-release",
+        "type": "github"
+      }
+    },
     "mac-app-util": {
       "inputs": {
         "cl-nix-lite": "cl-nix-lite",
@@ -317,6 +349,8 @@
         "home-manager": "home-manager_2",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "homebrew-functions": "homebrew-functions",
+        "homebrew-mssql": "homebrew-mssql",
         "mac-app-util": "mac-app-util",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",

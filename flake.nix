@@ -21,10 +21,18 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    homebrew-mssql = {
+      url = "github:microsoft/homebrew-mssql-release";
+      flake = false;
+    };
+    homebrew-functions = {
+      url = "github:azure/homebrew-functions";
+      flake = false;
+    };
     agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, homebrew-core, homebrew-cask, home-manager, agenix }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, homebrew-core, homebrew-cask, homebrew-mssql, homebrew-functions, home-manager, agenix }:
   let
     username = "quintisimo";
     homeDirectory = "/Users/${username}";
@@ -37,13 +45,13 @@
 
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
-      environment.systemPackages = import ./packages/nix.nix { 
-        inherit pkgs; 
+      environment.systemPackages = import ./packages/nix.nix {
+        inherit pkgs;
       };
 
       fonts.packages = with pkgs; [
         nerd-fonts.fira-code
-      ];  
+      ];
 
       homebrew = {
         enable = true;
@@ -52,7 +60,17 @@
 	        cleanup = "zap";
         };
         casks = import ./packages/casks.nix;
-	      masApps = import ./packages/mas.nix;
+        masApps = import ./packages/mas.nix;
+        brews = [
+          "unixodbc"
+        ];
+        extraConfig = ''
+          module Utils
+            ENV['HOMEBREW_ACCEPT_EULA']='y'
+          end
+          brew "msodbcsql18"
+          brew "mssql-tools18"
+        '';
       };
 
       system = {
@@ -64,9 +82,9 @@
         primaryUser = username;
         defaults = {
           # Dock Setup
-          dock = import ./dock.nix { 
+          dock = import ./dock.nix {
             inherit  pkgs;
-            inherit homeDirectory;   
+            inherit homeDirectory;
           };
           NSGlobalDomain = {
             AppleInterfaceStyle = "Dark";
@@ -114,9 +132,9 @@
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#macbook
     darwinConfigurations."macbook" = nix-darwin.lib.darwinSystem {
-      modules = [ 
+      modules = [
 	      configuration
-	      mac-app-util.darwinModules.default 
+	      mac-app-util.darwinModules.default
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -149,6 +167,8 @@
             taps = {
               "homebrew/homebrew-core" = homebrew-core;
               "homebrew/homebrew-cask" = homebrew-cask;
+              "microsoft/homebrew-mssql" = homebrew-mssql;
+              "azure/homebrew-functions" = homebrew-functions;
             };
 
             # Optional: Enable fully-declarative tap management
