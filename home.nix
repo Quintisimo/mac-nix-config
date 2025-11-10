@@ -54,6 +54,7 @@ in
                 "show": "auto"
               },
               "base_keymap": "VSCode",
+              "format_on_save": "on",
               "telemetry": {
                 "diagnostics": false,
                 "metrics": false
@@ -77,6 +78,17 @@ in
               },
               "features": {
                 "edit_prediction_provider": "copilot"
+              },
+              "languages": {
+                "Python": {
+                  "language_servers": [
+                    // Disable basedpyright and enable Ty, and otherwise
+                  // use the default configuration.
+                  "ty",
+                  "ruff",
+                  "!basedpyright"
+                  ]
+                }
               }
             }
           '';

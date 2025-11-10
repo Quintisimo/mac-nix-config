@@ -24,4 +24,6 @@ with pkgs; [
   claude-code
   go
   pkl
+  uv
+  azurite
 ]
