@@ -46,7 +46,7 @@ in
                 "ignore": [".funcignore"]
               },
               "tab_size": 2,
-              "relative_line_numbers": true,
+              "relative_line_numbers": "enabled",
               "gutter": {
                 "line_numbers": true
               },
@@ -181,7 +181,7 @@ in
         };
       };
     };
-    
+
     # Cron Agents
     launchd = {
       enable = true;
