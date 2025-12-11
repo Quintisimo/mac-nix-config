@@ -13,5 +13,4 @@
   "maccy"
   "pearcleaner"
   "zed"
-  "gitup-app"
 ]
