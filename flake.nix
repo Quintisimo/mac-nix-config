@@ -63,6 +63,7 @@
         masApps = import ./packages/mas.nix;
         brews = [
           "unixodbc"
+          "azure-cli"
         ];
         extraConfig = ''
           module Utils

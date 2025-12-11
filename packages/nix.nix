@@ -15,7 +15,6 @@ with pkgs; [
   gh
   gh-poi
   terminal-notifier
-  azure-cli
   azure-functions-core-tools
   nodejs_22
   pnpm
