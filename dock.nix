@@ -9,9 +9,6 @@
       app = "/Applications/Zed.app";
     }
     {
-      app = "/Applications/GitUp.app";
-    }
-    {
       app = "/Applications/Ghostty.app";
     }
     {

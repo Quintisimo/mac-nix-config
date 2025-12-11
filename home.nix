@@ -112,13 +112,6 @@ in
       };
       git = {
         enable = true;
-        aliases = {
-          undo = "reset --soft HEAD~1";
-          update = "rebase origin/main";
-          force-push = "push --force-with-lease";
-          fixup = "!sh -c 'git add . && git commit --fixup=$1 && git rebase --autosquash $1~1'";
-          amend = "!sh -c 'git add . && git commit --amend --no-edit'";
-        };
         includes = [
           {
             condition  = "gitdir:~/Github/work/";
@@ -129,11 +122,22 @@ in
             };
           }
         ];
-        userName = "Quintus Cardozo";
-        userEmail = "quintuscardozo13@gmail.com";
-        extraConfig = {
-          init = {
-            defaultBranch = "main";
+        settings = {
+          user = {
+            name = "Quintus Cardozo";
+            email = "quintuscardozo13@gmail.com";
+          };
+          extraConfig = {
+            init = {
+              defaultBranch = "main";
+            };
+          };
+          aliases = {
+            undo = "reset --soft HEAD~1";
+            update = "rebase origin/main";
+            force-push = "push --force-with-lease";
+            fixup = "!sh -c 'git add . && git commit --fixup=$1 && git rebase --autosquash $1~1'";
+            amend = "!sh -c 'git add . && git commit --amend --no-edit'";
           };
         };
       };
