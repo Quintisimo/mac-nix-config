@@ -25,4 +25,5 @@ with pkgs; [
   pkl
   uv
   azurite
+  delta
 ]

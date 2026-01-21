@@ -123,16 +123,27 @@ in
           }
         ];
         settings = {
+          core = {
+            pager = "delta";
+          };
           user = {
             name = "Quintus Cardozo";
             email = "quintuscardozo13@gmail.com";
           };
-          extraConfig = {
-            init = {
-              defaultBranch = "main";
-            };
+          init = {
+            defaultBranch = "main";
           };
-          aliases = {
+          interactive = {
+            diffFilter = "delta --color-only";
+          };
+          delta = {
+            navigate = "true";
+            dark = "true";
+          };
+          merge = {
+            conflictStyle = "zdiff3";
+          };
+          alias = {
             undo = "reset --soft HEAD~1";
             update = "rebase origin/main";
             force-push = "push --force-with-lease";
