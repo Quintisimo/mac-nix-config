@@ -56,7 +56,9 @@
       homebrew = {
         enable = true;
         taps = builtins.attrNames config.nix-homebrew.taps;
-	      onActivation = {
+        onActivation = {
+          autoUpdate = true;
+          upgrade = true;
 	        cleanup = "zap";
         };
         casks = import ./packages/casks.nix;
