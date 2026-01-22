@@ -26,4 +26,5 @@ with pkgs; [
   uv
   azurite
   delta
+  yq-go
 ]
