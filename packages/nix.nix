@@ -9,6 +9,9 @@ with pkgs; [
   # Needed for zed bicep extension and azure-functions-core-tools
   dotnetCorePackages.aspnetcore_10_0-bin
 
+  # Needed for zed pkl extension
+  javaPackages.compiler.temurin-bin.jre-25
+
   # cli tools
   bat
   eza
