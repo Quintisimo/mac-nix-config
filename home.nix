@@ -76,8 +76,8 @@ in
               "notification_panel": {
                 "button": false
               },
-              "features": {
-                "edit_prediction_provider": "copilot"
+              "edit_predictions": {
+                "provider": "copilot",
               },
               "languages": {
                 "Python": {
