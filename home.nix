@@ -93,15 +93,11 @@ in
             }
           '';
         };
-      };
-    };
-
-    targets = {
-      darwin = {
-        defaults = {
-          "com.microsoft.VSCode" = {
-            ApplePressAndHoldEnabled = false;
-          };
+        global_git_ignore = {
+          target = ".config/git/ignore";
+          text = ''
+            .DS_Store
+          '';
         };
       };
     };
