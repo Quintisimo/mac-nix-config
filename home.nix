@@ -1,7 +1,7 @@
 { pkgs, config, homeDirectory, ... }:
 
 let
-  fontFamily = "FiraCode Nerd Font Mono";
+  fontFamily = "Maple Mono NF CN";
 in
   {
     age = {
@@ -36,8 +36,8 @@ in
                 "model_parameters": []
               },
               "icon_theme": "Catppuccin Mocha",
-              "buffer_font_family": "FiraCode Nerd Font Mono",
-              "ui_font_family": "FiraCode Nerd Font Mono",
+              "buffer_font_family": "${fontFamily}",
+              "ui_font_family": "${fontFamily}",
               "project_panel": {
                 "auto_fold_dirs": false
               },

@@ -50,7 +50,7 @@
       };
 
       fonts.packages = with pkgs; [
-        nerd-fonts.fira-code
+        maple-mono.NF-CN-unhinted
       ];
 
       homebrew = {
