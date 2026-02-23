@@ -81,6 +81,7 @@ in
               },
               "languages": {
                 "Python": {
+                  "format_on_save": "off",
                   "language_servers": [
                     // Disable basedpyright and enable Ty, and otherwise
                   // use the default configuration.
