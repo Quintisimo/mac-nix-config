@@ -5,12 +5,16 @@ with pkgs; [
   fishPlugins.hydro
   fishPlugins.z
   fishPlugins.bang-bang
-
-  # Needed for azure-functions-core-tools
-  dotnetCorePackages.aspnetcore_8_0-bin
   
-  # Needed for zed bicep extension
-  dotnetCorePackages.aspnetcore_10_0-bin
+  (
+    with dotnetCorePackages; combinePackages [
+      # Needed for azure-functions-core-tools
+      aspnetcore_8_0-bin
+      
+      # Needed for zed bicep extension
+      aspnetcore_10_0-bin
+    ]  
+  )
 
   # Needed for zed pkl extension
   javaPackages.compiler.temurin-bin.jre-25
