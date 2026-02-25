@@ -24,7 +24,6 @@ with pkgs; [
   azure-functions-core-tools
   nodejs_22
   pnpm
-  nodePackages.vercel
   cloudflared
   claude-code
   go
