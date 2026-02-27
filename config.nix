@@ -6,8 +6,7 @@
 }:
 {
   imports = [
-    ./packages/nix.nix
-    ./packages/brew.nix
+    ./packages
     ./dock.nix
   ];
 
