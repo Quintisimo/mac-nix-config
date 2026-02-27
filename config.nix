@@ -19,14 +19,19 @@
       type = lib.types.str;
       description = "The home directory of the primary user on this system.";
     };
+    font = lib.mkOption {
+      type = lib.types.str;
+      description = "The font family to use for terminal and editor applications.";
+    };
   };
 
   config = {
-    # Allow unfree software
-    nixpkgs.config.allowUnfree = true;
-
-    # The platform the configuration will be used on.
-    nixpkgs.hostPlatform = "aarch64-darwin";
+    nixpkgs = {
+      # Allow unfree software
+      config.allowUnfree = true;
+      # The platform the configuration will be used on.
+      hostPlatform = "aarch64-darwin";
+    };
 
     system = {
       # Set Git commit hash for darwin-version
@@ -65,11 +70,12 @@
       };
     };
 
-    # Automatic garbage collection
-    nix.gc.automatic = true;
-
-    # Necessary for using flakes on this system.
-    nix.settings.experimental-features = "nix-command flakes";
+    nix = {
+      # Automatic garbage collection
+      gc.automatic = true;
+      # Necessary for using flakes on this system.
+      settings.experimental-features = "nix-command flakes";
+    };
 
     # Enable alternative shell support in nix-darwin.
     programs.fish.enable = true;

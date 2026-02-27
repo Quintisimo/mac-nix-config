@@ -59,6 +59,7 @@
             {
               username = username;
               home = home;
+              font = "Maple Mono NF CN";
             }
             mac-app-util.darwinModules.default
             agenix.nixosModules.default
@@ -80,10 +81,7 @@
               home-manager.sharedModules = [
                 mac-app-util.homeManagerModules.default
               ];
-            }
-            ./home.nix
-            {
-              font = "Maple Mono NF CN";
+              home-manager.users."${username}" = ./home;
             }
             nix-homebrew.darwinModules.nix-homebrew
             {
