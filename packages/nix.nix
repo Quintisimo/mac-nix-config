@@ -1,39 +1,47 @@
-{ pkgs }:
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [
+    # shell plugins
+    fishPlugins.hydro
+    fishPlugins.z
+    fishPlugins.bang-bang
 
-with pkgs; [
-  # shell plugins
-  fishPlugins.hydro
-  fishPlugins.z
-  fishPlugins.bang-bang
-  
-  (
-    with dotnetCorePackages; combinePackages [
-      # Needed for azure-functions-core-tools
-      aspnetcore_8_0-bin
-      
-      # Needed for zed bicep extension
-      aspnetcore_10_0-bin
-    ]  
-  )
+    (
+      with dotnetCorePackages;
+      combinePackages [
+        # Needed for azure-functions-core-tools
+        aspnetcore_8_0-bin
 
-  # Needed for zed pkl extension
-  javaPackages.compiler.temurin-bin.jre-25
+        # Needed for zed bicep extension
+        aspnetcore_10_0-bin
+      ]
+    )
 
-  # cli tools
-  bat
-  eza
-  gh
-  gh-poi
-  terminal-notifier
-  azure-functions-core-tools
-  nodejs_22
-  pnpm
-  cloudflared
-  claude-code
-  go
-  pkl
-  uv
-  azurite
-  delta
-  yq-go
-]
+    # Needed for zed pkl extension
+    javaPackages.compiler.temurin-bin.jre-25
+
+    # cli tools
+    bat
+    eza
+    gh
+    gh-poi
+    terminal-notifier
+    azure-functions-core-tools
+    nodejs_22
+    pnpm
+    cloudflared
+    claude-code
+    go
+    pkl
+    uv
+    azurite
+    delta
+    yq-go
+    nil
+    nixd
+  ];
+
+  fonts.packages = with pkgs; [
+    maple-mono.NF-CN-unhinted
+  ];
+}
