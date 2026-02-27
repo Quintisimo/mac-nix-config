@@ -10,7 +10,6 @@
     };
     casks = [
       "microsoft-teams"
-      "ghostty"
       "zen"
       "orbstack"
       "safeincloud-password-manager"

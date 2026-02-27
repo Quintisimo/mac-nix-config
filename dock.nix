@@ -1,20 +1,23 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 {
   config =
     let
-      createApp = app: {
+      createBrewCaskApp = app: {
         app = "/Applications/${app}.app";
       };
-      createSpacer = small: {
-        spacer = {
-          small = small;
-        };
+      createNixApp = pkg: app: {
+        app = "${pkgs.${pkg}}/Applications/${app}.app";
       };
       createSystemApp = app: {
         app = "/System/Applications/${app}.app";
       };
       createFolder = folder: {
         folder = "${config.home}/${folder}";
+      };
+      createSpacer = small: {
+        spacer = {
+          small = small;
+        };
       };
     in
     {
@@ -23,24 +26,24 @@
         wvous-br-corner = 2;
         show-recents = false;
         persistent-apps = [
-          (createApp "Zed")
-          (createApp "Ghostty")
-          (createApp "OrbStack")
+          (createBrewCaskApp "Zed")
+          (createNixApp "ghostty-bin" "Ghostty")
+          (createBrewCaskApp "OrbStack")
           (createSpacer true)
           (createSystemApp "Mail")
-          (createApp "Discord")
-          (createApp "Slack")
-          (createApp "Microsoft Teams")
+          (createBrewCaskApp "Discord")
+          (createBrewCaskApp "Slack")
+          (createBrewCaskApp "Microsoft Teams")
           (createSystemApp "Messages")
           (createSpacer true)
           (createSystemApp "Calendar")
           (createSpacer true)
-          (createApp "1Password")
-          (createApp "SafeInCloud Password Manager")
+          (createBrewCaskApp "1Password")
+          (createBrewCaskApp "SafeInCloud Password Manager")
           (createSpacer true)
-          (createApp "Zen")
+          (createBrewCaskApp "Zen")
           (createSpacer true)
-          (createApp "Yaak")
+          (createBrewCaskApp "Yaak")
         ];
         persistent-others = [
           (createFolder "Github/personal")

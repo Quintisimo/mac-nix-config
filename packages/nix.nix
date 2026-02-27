@@ -20,6 +20,8 @@
     # Needed for zed pkl extension
     javaPackages.compiler.temurin-bin.jre-25
 
+    ghostty-bin
+
     # cli tools
     bat
     eza
