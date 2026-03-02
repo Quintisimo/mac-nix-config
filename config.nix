@@ -23,6 +23,10 @@
       type = lib.types.str;
       description = "The font family to use for terminal and editor applications.";
     };
+    folders = lib.mkOption {
+      type = lib.types.attrs;
+      description = "The folders in the dock to be used for the persistent-others section.";
+    };
   };
 
   config = {
@@ -31,6 +35,28 @@
       config.allowUnfree = true;
       # The platform the configuration will be used on.
       hostPlatform = "aarch64-darwin";
+    };
+
+    environment.customIcons = {
+      enable = true;
+      icons = [
+        {
+          path = config.folders.nix;
+          icon = ./icons/nix.png;
+        }
+        {
+          path = config.folders.personal;
+          icon = ./icons/github.png;
+        }
+        {
+          path = config.folders.work;
+          icon = ./icons/github.png;
+        }
+        {
+          path = config.folders.downloads;
+          icon = ./icons/downloads.png;
+        }
+      ];
     };
 
     system = {

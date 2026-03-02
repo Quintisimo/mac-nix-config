@@ -13,5 +13,11 @@
 ## Adding/Editing secrets
 
 - Change into the secrets folder using `cd secrets`
- 
+
 - Run the command `nix run github:ryantm/agenix -- -e secrets.age`
+
+## Folder Icons
+
+- Folder icons are created using:
+  - https://folderart.christianvm.dev/
+  - https://icon-sets.iconify.design/

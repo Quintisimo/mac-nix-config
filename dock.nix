@@ -1,24 +1,31 @@
 { pkgs, config, ... }:
+let
+  folders = config.folders;
+  createApp = path: name: {
+    app = "${path}/Applications/${name}.app";
+  };
+  createFolder = folder: {
+    folder = {
+      path = folder;
+      displayas = "folder";
+    };
+  };
+  createSpacer =
+    {
+      small ? true,
+    }:
+    {
+      spacer = {
+        small = small;
+      };
+    };
+in
 {
   config =
     let
-      createBrewCaskApp = app: {
-        app = "/Applications/${app}.app";
-      };
-      createNixApp = pkg: app: {
-        app = "${pkgs.${pkg}}/Applications/${app}.app";
-      };
-      createSystemApp = app: {
-        app = "/System/Applications/${app}.app";
-      };
-      createFolder = folder: {
-        folder = "${config.home}/${folder}";
-      };
-      createSpacer = small: {
-        spacer = {
-          small = small;
-        };
-      };
+      createBrewCaskApp = createApp "";
+      createNixApp = pkg: createApp "${pkgs.${pkg}}";
+      createSystemApp = createApp "/System";
     in
     {
       system.defaults.dock = {
@@ -29,26 +36,27 @@
           (createBrewCaskApp "Zed")
           (createNixApp "ghostty-bin" "Ghostty")
           (createBrewCaskApp "OrbStack")
-          (createSpacer true)
+          (createSpacer { })
           (createSystemApp "Mail")
           (createBrewCaskApp "Discord")
           (createBrewCaskApp "Slack")
           (createBrewCaskApp "Microsoft Teams")
           (createSystemApp "Messages")
-          (createSpacer true)
+          (createSpacer { })
           (createSystemApp "Calendar")
-          (createSpacer true)
+          (createSpacer { })
           (createBrewCaskApp "1Password")
           (createBrewCaskApp "SafeInCloud Password Manager")
-          (createSpacer true)
+          (createSpacer { })
           (createBrewCaskApp "Zen")
-          (createSpacer true)
+          (createSpacer { })
           (createBrewCaskApp "Yaak")
         ];
         persistent-others = [
-          (createFolder "Github/personal")
-          (createFolder "Github/work")
-          (createFolder "Downloads")
+          (createFolder folders.nix)
+          (createFolder folders.personal)
+          (createFolder folders.work)
+          (createFolder folders.downloads)
         ];
       };
     };

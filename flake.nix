@@ -13,6 +13,7 @@
     };
     agenix.url = "github:ryantm/agenix";
     mac-app-util.url = "github:hraban/mac-app-util";
+    darwin-custom-icons.url = "github:ryanccn/nix-darwin-custom-icons";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -38,6 +39,7 @@
       home-manager,
       agenix,
       mac-app-util,
+      darwin-custom-icons,
       nix-homebrew,
       homebrew-core,
       homebrew-cask,
@@ -52,15 +54,23 @@
         let
           username = "quintisimo";
           home = "/Users/${username}";
+          github = "${home}/Github";
         in
         nix-darwin.lib.darwinSystem {
           modules = [
             ./config.nix
             {
               username = username;
-              home = home;
               font = "Maple Mono NF CN";
+              home = home;
+              folders = {
+                downloads = "${home}/Downloads";
+                personal = "${github}/personal";
+                work = "${github}/work";
+                nix = "/etc/nix-darwin";
+              };
             }
+            darwin-custom-icons.darwinModules.default
             mac-app-util.darwinModules.default
             agenix.nixosModules.default
             {
