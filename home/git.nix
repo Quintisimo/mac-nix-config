@@ -1,6 +1,8 @@
+{ macos-gitignore, ... }:
 {
-  config.programs = {
-    git = {
+  config = {
+    xdg.configFile."git/ignore".source = "${macos-gitignore}/Global/macOS.gitignore";
+    programs.git = {
       enable = true;
       includes = [
         {
@@ -12,7 +14,6 @@
           };
         }
       ];
-      ignores = [ ".DS_Store" ];
       settings = {
         core = {
           pager = "delta";

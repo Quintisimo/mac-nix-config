@@ -26,6 +26,10 @@
       url = "github:microsoft/homebrew-mssql-release";
       flake = false;
     };
+    macos-gitignore = {
+      url = "github:github/gitignore";
+      flake = false;
+    };
   };
 
   outputs =
@@ -38,6 +42,7 @@
       homebrew-core,
       homebrew-cask,
       homebrew-mssql,
+      macos-gitignore,
       ...
     }:
     {
@@ -73,6 +78,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit macos-gitignore; };
               home-manager.sharedModules = [
                 mac-app-util.homeManagerModules.default
               ];

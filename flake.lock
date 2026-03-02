@@ -81,6 +81,21 @@
         "type": "github"
       }
     },
+    "darwin-custom-icons": {
+      "locked": {
+        "lastModified": 1719071371,
+        "narHash": "sha256-SPazmoL3Pls4QTiZ2CRtavecNJgzpL4GeiwafTmtdJ8=",
+        "owner": "ryanccn",
+        "repo": "nix-darwin-custom-icons",
+        "rev": "ad3e8cf49ef0b276ccf67410f544ff33d965d821",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ryanccn",
+        "repo": "nix-darwin-custom-icons",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -248,6 +263,22 @@
         "type": "github"
       }
     },
+    "macos-gitignore": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1770918651,
+        "narHash": "sha256-jZH6gJYnwCyFmRYgKzqdC0ng4UALxE8c918i9vp6TSw=",
+        "owner": "github",
+        "repo": "gitignore",
+        "rev": "b4105e73e493bb7a20b5d7ea35efd5780ca44938",
+        "type": "github"
+      },
+      "original": {
+        "owner": "github",
+        "repo": "gitignore",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -401,11 +432,13 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "darwin-custom-icons": "darwin-custom-icons",
         "home-manager": "home-manager_2",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
         "homebrew-mssql": "homebrew-mssql",
         "mac-app-util": "mac-app-util",
+        "macos-gitignore": "macos-gitignore",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_6"
