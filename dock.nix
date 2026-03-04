@@ -29,8 +29,8 @@ in
     in
     {
       system.defaults.dock = {
-        wvous-bl-corner = 13;
-        wvous-br-corner = 2;
+        wvous-bl-corner = 13; # Lock Screen
+        wvous-br-corner = 2; # Mission Control
         show-recents = false;
         persistent-apps = [
           (createBrewCaskApp "Zed")
