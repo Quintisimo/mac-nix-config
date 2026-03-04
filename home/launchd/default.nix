@@ -31,8 +31,8 @@
             enable = true;
             config = {
               RunAtLoad = true;
-              StandardErrorPath = "${osConfig.home}/Library/Logs/${name}.error.log";
-              StandardOutPath = "${osConfig.home}/Library/Logs/${name}.out.log";
+              StandardErrorPath = "${osConfig.home}/Library/Logs/${name}/${name}.error.log";
+              StandardOutPath = "${osConfig.home}/Library/Logs/${name}/${name}.out.log";
               Program = "${
                 pkgs.writeShellApplication {
                   inherit name text runtimeInputs;
@@ -80,18 +80,20 @@
               done
             '';
           };
-          prune-git-repos = {
+          prune-repos-merged-branches = {
             runtimeInputs = [
+              pkgs.gh
               pkgs.gh-poi
+              pkgs.terminal-notifier
             ];
             text = ''
-              ${runOnThursday}
               ${waitForNetwork}
 
-              find ~/Github -type d -name ".git" | while read -r dir; do
+              find ${osConfig.folders.github} -type d -name ".git" | while read -r dir; do
                 repo_dir=$(dirname "$dir")
-                cd "$repo_dir" && gh-poi
+                cd "$repo_dir" && git checkout main && gh-poi
               done
+              terminal-notifier -title "Prune merged branches" -message "Finished pruning merged branches in all repos"
             '';
           };
         };

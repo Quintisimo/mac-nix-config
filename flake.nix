@@ -64,6 +64,7 @@
               font = "Maple Mono NF CN";
               home = home;
               folders = {
+                github = github;
                 downloads = "${home}/Downloads";
                 personal = "${github}/personal";
                 work = "${github}/work";
