@@ -22,6 +22,8 @@
 
     ghostty-bin
 
+    skhd
+
     # cli tools
     bat
     eza
