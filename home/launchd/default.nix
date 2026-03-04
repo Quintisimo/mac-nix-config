@@ -6,19 +6,6 @@
 {
   config.launchd =
     let
-      waitForNetwork = ''
-        while ! ping -c1 -W1 1.1.1.1 &> /dev/null ; do
-          sleep 1
-        done
-      '';
-      runOnThursday = ''
-        thursday=4
-        day=$(date +%u)
-
-        if [ "$day" -ne "$thursday" ]; then
-          exit 0
-        fi
-      '';
       createAgent =
         { pkgs, jobs }:
         builtins.mapAttrs (
@@ -35,7 +22,15 @@
               StandardOutPath = "${osConfig.home}/Library/Logs/${name}/${name}.out.log";
               Program = "${
                 pkgs.writeShellApplication {
-                  inherit name text runtimeInputs;
+                  inherit name runtimeInputs;
+                  text = ''
+                    # Wait for network connectivity before running the job
+                    while ! ping -c1 -W1 1.1.1.1 &> /dev/null ; do
+                      sleep 1
+                    done
+
+                    ${text}
+                  '';
                 }
               }/bin/${name}";
             };
@@ -53,9 +48,6 @@
               pkgs.terminal-notifier
             ];
             text = ''
-              ${runOnThursday}
-              ${waitForNetwork}
-
               orgs=$(gh org list)
               open_pr_repos=""
 
@@ -80,15 +72,32 @@
               done
             '';
           };
+          flake-lock-updated = {
+            runtimeInputs = [
+              pkgs.git
+              pkgs.terminal-notifier
+            ];
+            text = ''
+              cd ${osConfig.folders.nix}
+              git fetch origin
+
+              local_commit=$(git rev-parse main)
+              remote_commit=$(git rev-parse origin/main)
+              url=$(git config --get remote.origin.url | sed 's/\.git$//')/commit/$remote_commit
+
+              if [ "$local_commit" != "$remote_commit" ]; then
+                terminal-notifier -title "Flake Lock Updated" -message "Renovate has updated the flake lock" -open "$url"
+              fi
+            '';
+          };
           prune-repos-merged-branches = {
             runtimeInputs = [
+              pkgs.git
               pkgs.gh
               pkgs.gh-poi
               pkgs.terminal-notifier
             ];
             text = ''
-              ${waitForNetwork}
-
               find ${osConfig.folders.github} -type d -name ".git" | while read -r dir; do
                 repo_dir=$(dirname "$dir")
                 cd "$repo_dir" && git checkout main && gh-poi
