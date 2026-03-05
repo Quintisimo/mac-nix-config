@@ -79,7 +79,7 @@
           AppleShowAllFiles = true;
           FXPreferredViewStyle = "Nlsv";
           NewWindowTarget = "Other";
-          NewWindowTargetPath = "file://${config.home}/Github";
+          NewWindowTargetPath = "file://${config.folders.github}";
           ShowPathbar = true;
           ShowStatusBar = true;
         };

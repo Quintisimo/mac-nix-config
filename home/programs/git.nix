@@ -1,4 +1,4 @@
-{ macos-gitignore, ... }:
+{ osConfig, macos-gitignore, ... }:
 {
   config = {
     xdg.configFile."git/ignore".source = "${macos-gitignore}/Global/macOS.gitignore";
@@ -6,7 +6,7 @@
       enable = true;
       includes = [
         {
-          condition = "gitdir=~/Github/work/";
+          condition = "gitdir:${osConfig.folders.work}/";
           contents = {
             user = {
               email = "qcardozo@getlegaltech.com";
@@ -30,10 +30,29 @@
         };
         delta = {
           navigate = "true";
-          dark = "true";
+          side-by-side = true;
+        };
+        fetch = {
+          prune = true;
+        };
+        push = {
+          default = "simple";
+          autoSetupRemote = true;
+        };
+        rebase = {
+          autoSquash = true;
+          autoStash = true;
+          updateRefs = true;
         };
         merge = {
           conflictStyle = "zdiff3";
+        };
+        rerere = {
+          enable = true;
+          autoupdate = true;
+        };
+        help = {
+          autocorrect = "prompt";
         };
         alias = {
           undo = "reset --soft HEAD~1";
@@ -41,6 +60,7 @@
           force-push = "push --force-with-lease";
           fixup = "!sh -c 'git add . && git commit --fixup=$1 && git rebase --autosquash $1~1'";
           amend = "!sh -c 'git add . && git commit --amend --no-edit'";
+          status = "status -s";
         };
       };
     };
