@@ -81,11 +81,11 @@
               cd ${osConfig.folders.nix}
               git fetch origin
 
-              local_commit=$(git rev-parse main)
-              remote_commit=$(git rev-parse origin/main)
-              url=$(git config --get remote.origin.url | sed 's/\.git$//')/commit/$remote_commit
+              remote_main=origin/main
+              latest_remote_commit_author=$(git log -1 --format='%an' "$remote_main")
 
-              if [ "$local_commit" != "$remote_commit" ]; then
+              if [ "$latest_remote_commit_author" = "renovate[bot]" ]; then
+                url=$(git config --get remote.origin.url | sed 's/\.git$//')/commit/$(git rev-parse "$remote_main")
                 terminal-notifier -title "Flake Lock Updated" -message "Renovate has updated the flake lock" -open "$url"
               fi
             '';
