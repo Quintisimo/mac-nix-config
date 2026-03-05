@@ -1,8 +1,8 @@
-{ pkgs, config, ... }:
+{ config, ... }:
 let
   folders = config.folders;
   createApp = path: name: {
-    app = "${path}/Applications/${name}.app";
+    app = "${path}${name}.app";
   };
   createFolder = folder: {
     folder = {
@@ -23,9 +23,9 @@ in
 {
   config =
     let
-      createBrewCaskApp = createApp "";
-      createNixApp = pkg: createApp "${pkgs.${pkg}}";
-      createSystemApp = createApp "/System";
+      createBrewCaskApp = createApp "/Applications/";
+      createHomeManagerApp = createApp "${config.home}/Applications/Home Manager Apps/";
+      createSystemApp = createApp "/System/Applications/";
     in
     {
       system.defaults.dock = {
@@ -34,7 +34,7 @@ in
         show-recents = false;
         persistent-apps = [
           (createBrewCaskApp "Zed")
-          (createNixApp "ghostty-bin" "Ghostty")
+          (createHomeManagerApp "Ghostty")
           (createBrewCaskApp "OrbStack")
           (createSpacer { })
           (createSystemApp "Mail")

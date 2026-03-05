@@ -77,9 +77,7 @@
         finder = {
           AppleShowAllExtensions = true;
           AppleShowAllFiles = true;
-          FXPreferredViewStyle = "Nlsv";
-          NewWindowTarget = "Other";
-          NewWindowTargetPath = "file://${config.folders.github}";
+          FXPreferredViewStyle = "Nlsv"; # List view
           ShowPathbar = true;
           ShowStatusBar = true;
         };

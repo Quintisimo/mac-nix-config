@@ -1,11 +1,6 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    # shell plugins
-    fishPlugins.hydro
-    fishPlugins.z
-    fishPlugins.bang-bang
-
     (
       with dotnetCorePackages;
       combinePackages [
@@ -19,10 +14,6 @@
 
     # Needed for zed pkl extension
     javaPackages.compiler.temurin-bin.jre-25
-
-    ghostty-bin
-
-    skhd
 
     # cli tools
     bat
