@@ -27,6 +27,10 @@
       url = "github:microsoft/homebrew-mssql-release";
       flake = false;
     };
+    homebrew-vjeantet = {
+      url = "github:vjeantet/homebrew-tap";
+      flake = false;
+    };
     macos-gitignore = {
       url = "github:github/gitignore";
       flake = false;
@@ -44,6 +48,7 @@
       homebrew-core,
       homebrew-cask,
       homebrew-mssql,
+      homebrew-vjeantet,
       macos-gitignore,
       ...
     }:
@@ -112,6 +117,7 @@
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
                   "microsoft/homebrew-mssql" = homebrew-mssql;
+                  "vjeantet/homebrew-tap" = homebrew-vjeantet;
                 };
 
                 # Optional: Enable fully-declarative tap management

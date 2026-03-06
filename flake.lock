@@ -240,6 +240,22 @@
         "type": "github"
       }
     },
+    "homebrew-vjeantet": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1772739053,
+        "narHash": "sha256-N/58fZcj8/2d9ElG38Jk8K0SlTt/YsDH5dzsxa9LDzk=",
+        "owner": "vjeantet",
+        "repo": "homebrew-tap",
+        "rev": "0ca0aee65d6ecf50b216c7218f6ff32d6213a839",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vjeantet",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "mac-app-util": {
       "inputs": {
         "cl-nix-lite": "cl-nix-lite",
@@ -437,6 +453,7 @@
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
         "homebrew-mssql": "homebrew-mssql",
+        "homebrew-vjeantet": "homebrew-vjeantet",
         "mac-app-util": "mac-app-util",
         "macos-gitignore": "macos-gitignore",
         "nix-darwin": "nix-darwin",

@@ -30,6 +30,7 @@
     brews = [
       "unixodbc"
       "azure-cli"
+      "alerter"
     ];
     extraConfig = ''
       module Utils

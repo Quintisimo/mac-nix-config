@@ -20,7 +20,6 @@
     eza
     gh
     gh-poi
-    terminal-notifier
     azure-functions-core-tools
     nodejs_22
     pnpm
