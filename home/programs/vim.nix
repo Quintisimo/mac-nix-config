@@ -7,5 +7,4 @@
       relativenumber = true;
     };
   };
-
 }

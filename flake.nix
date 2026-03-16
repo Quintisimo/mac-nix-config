@@ -75,6 +75,10 @@
                 work = "${github}/work";
                 nix = "/etc/nix-darwin";
               };
+              githubOrgs = [
+                "Littles-Lawyers"
+                "The-Legal-Tech-Company"
+              ];
             }
             darwin-custom-icons.darwinModules.default
             mac-app-util.darwinModules.default

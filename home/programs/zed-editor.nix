@@ -86,5 +86,34 @@
         };
       };
     };
+    userTasks = [
+      {
+        label = "GhDash";
+        command = "gh-dash";
+        shell = {
+          program = "sh";
+        };
+        hide = "on_success";
+        reveal_target = "center";
+        show_summary = false;
+        show_command = false;
+        allow_concurrent_runs = true;
+        use_new_terminal = true;
+      }
+    ];
+    userKeymaps = [
+      {
+        context = "Workspace";
+        bindings = {
+          fn-g = [
+            "task::Spawn"
+            {
+              task_name = "GhDash";
+              reveal_target = "center";
+            }
+          ];
+        };
+      }
+    ];
   };
 }

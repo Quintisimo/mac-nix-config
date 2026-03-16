@@ -5,5 +5,6 @@
     ./git.nix
     ./vim.nix
     ./zed-editor.nix
+    ./gh-dash.nix
   ];
 }
