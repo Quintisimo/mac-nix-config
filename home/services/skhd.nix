@@ -4,7 +4,7 @@
     services.skhd = {
       enable = true;
       config = ''
-        fn - c : zed ${osConfig.folders.nix}
+        fn - c : zeditor --zed "${osConfig.folders.hmApps}/Zed.app"  ${osConfig.folders.nix}
       '';
     };
     home.activation.reloadSkhdConfig = ''

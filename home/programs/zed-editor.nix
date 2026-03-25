@@ -2,7 +2,6 @@
 {
   config.programs.zed-editor = {
     enable = true;
-    package = null; # package installed with homebrew
     extensions = [
       "html"
       "toml"

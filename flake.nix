@@ -74,6 +74,7 @@
                 personal = "${github}/personal";
                 work = "${github}/work";
                 nix = "/etc/nix-darwin";
+                hmApps = "${home}/Applications/Home Manager Apps";
               };
               githubOrgs = [
                 "Littles-Lawyers"

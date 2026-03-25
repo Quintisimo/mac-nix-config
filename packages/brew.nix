@@ -21,7 +21,7 @@
       "slack"
       "maccy"
       "pearcleaner"
-      "zed"
+      "linear-linear"
     ];
     masApps = {
       amphetamine = 937984704;

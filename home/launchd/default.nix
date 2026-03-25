@@ -46,7 +46,6 @@
         inherit pkgs;
         jobs =
           let
-            openZenWorkUrl = "open -a \"Zen\" \"ext+container:name=Work&url=$url\"";
             githubUrl = "https://github.com";
             iconWithTimeout =
               name:
@@ -83,8 +82,7 @@
 
                 if [ "$response" == "$action" ]; then
                   for open_pr_repo in $open_pr_repos; do
-                    url="${githubUrl}/$open_pr_repo/pulls"
-                    ${openZenWorkUrl}
+                    open "${githubUrl}/$open_pr_repo/pulls"
                   done
                 fi
               '';
@@ -114,8 +112,7 @@
                 )
 
                 if [ "$response" == "$action"  ]; then
-                  url=${githubUrl}/commit/$(git rev-parse "$remote_main")
-                  ${openZenWorkUrl}
+                  open "${githubUrl}/commit/$(git rev-parse "$remote_main")"
                 fi
               '';
             };

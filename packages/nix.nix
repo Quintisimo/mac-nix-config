@@ -1,16 +1,9 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    (
-      with dotnetCorePackages;
-      combinePackages [
-        # Needed for azure-functions-core-tools
-        aspnetcore_8_0-bin
 
-        # Needed for zed bicep extension
-        aspnetcore_10_0-bin
-      ]
-    )
+    # Needed for zed bicep extension
+    dotnetCorePackages.aspnetcore_10_0-bin
 
     # Needed for zed pkl extension
     javaPackages.compiler.temurin-bin.jre-25
@@ -21,7 +14,6 @@
     gh
     gh-poi
     azure-functions-core-tools
-    nodejs_22
     pnpm
     cloudflared
     claude-code
