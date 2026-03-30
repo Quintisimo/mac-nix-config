@@ -25,6 +25,7 @@
     yq-go
     nil
     nixd
+    git-absorb
   ];
 
   fonts.packages = with pkgs; [
