@@ -26,6 +26,7 @@
     nil
     nixd
     git-absorb
+    nodejs
   ];
 
   fonts.packages = with pkgs; [
