@@ -12,7 +12,6 @@
     bat
     eza
     gh
-    gh-poi
     azure-functions-core-tools
     pnpm
     cloudflared
