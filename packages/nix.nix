@@ -2,6 +2,17 @@
 {
   environment.systemPackages = with pkgs; [
 
+    (
+      with dotnetCorePackages;
+      combinePackages [
+        # Needed for azure-functions-core-tools
+        aspnetcore_8_0-bin
+
+        # Needed for zed bicep extension
+        aspnetcore_10_0-bin
+      ]
+    )
+
     # Needed for zed bicep extension
     dotnetCorePackages.aspnetcore_10_0-bin
 
