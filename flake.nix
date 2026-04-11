@@ -31,6 +31,10 @@
       url = "github:vjeantet/homebrew-tap";
       flake = false;
     };
+    homebrew-xykong = {
+      url = "github:xykong/homebrew-tap";
+      flake = false;
+    };
     macos-gitignore = {
       url = "github:github/gitignore";
       flake = false;
@@ -49,6 +53,7 @@
       homebrew-cask,
       homebrew-mssql,
       homebrew-vjeantet,
+      homebrew-xykong,
       macos-gitignore,
       ...
     }:
@@ -123,6 +128,7 @@
                   "homebrew/homebrew-cask" = homebrew-cask;
                   "microsoft/homebrew-mssql" = homebrew-mssql;
                   "vjeantet/homebrew-tap" = homebrew-vjeantet;
+                  "xykong/homebrew-tap" = homebrew-xykong;
                 };
 
                 # Optional: Enable fully-declarative tap management
