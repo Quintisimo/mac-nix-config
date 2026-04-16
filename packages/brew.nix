@@ -20,10 +20,7 @@
       "discord"
       "slack"
       "maccy"
-      "pearcleaner"
       "linear-linear"
-      "flux-markdown"
-      "dockdoor"
     ];
     masApps = {
       amphetamine = 937984704;

@@ -27,10 +27,6 @@
       type = lib.types.attrs;
       description = "The folders in the dock to be used for the persistent-others section.";
     };
-    githubOrgs = lib.mkOption {
-      type = lib.types.listOf lib.types.str;
-      description = "The GitHub organizations I am a member of, used for filtering pull requests in gh-dash.";
-    };
   };
 
   config = {
