@@ -96,7 +96,7 @@
                 git fetch origin
 
                 remote_main=origin/main
-                latest_remote_commit_author=$(git log -1 --format='%an' "$remote_main")
+                latest_remote_commit_author=$(git log -1 --format='%an' --since=midnight "$remote_main")
 
                 if [[ "$latest_remote_commit_author" != "renovate[bot]" ]]; then
                   exit 0
@@ -112,7 +112,7 @@
                 )
 
                 if [ "$response" == "$action"  ]; then
-                  open "${githubUrl}/commit/$(git rev-parse "$remote_main")"
+                  gh browse "$(git rev-parse "$remote_main")"
                 fi
               '';
             };
