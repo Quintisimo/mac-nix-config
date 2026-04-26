@@ -82,6 +82,10 @@
           ShowStatusBar = true;
         };
       };
+      # Reload dock after homebrew runs to ensure new apps are added to the dock.
+      activationScripts.postActivation.text = ''
+        /usr/bin/killall Dock || true
+      '';
     };
 
     users = {
