@@ -25,6 +25,7 @@ in
     let
       createBrewCaskApp = createApp "/Applications/";
       createHomeManagerApp = createApp "${config.folders.hmApps}/";
+      createWebApp = createApp "${config.folders.webApps}/";
       createSystemApp = createApp "/System/Applications/";
     in
     {
@@ -50,6 +51,7 @@ in
           (createBrewCaskApp "SafeInCloud Password Manager")
           (createSpacer { })
           (createBrewCaskApp "Helium")
+          (createWebApp "YouTube Music")
           (createSpacer { })
           (createBrewCaskApp "Yaak")
         ];

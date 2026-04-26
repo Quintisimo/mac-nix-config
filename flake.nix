@@ -64,6 +64,7 @@
         let
           username = "quintisimo";
           home = "/Users/${username}";
+          userApps = "${home}/Applications";
           github = "${home}/Github";
         in
         nix-darwin.lib.darwinSystem {
@@ -79,7 +80,8 @@
                 personal = "${github}/personal";
                 work = "${github}/work";
                 nix = "/etc/nix-darwin";
-                hmApps = "${home}/Applications/Home Manager Apps";
+                hmApps = "${userApps}/Home Manager Apps";
+                webApps = "${userApps}/Chromium Apps.localized";
               };
             }
             darwin-custom-icons.darwinModules.default
