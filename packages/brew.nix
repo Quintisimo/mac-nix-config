@@ -10,7 +10,6 @@
     };
     casks = [
       "microsoft-teams"
-      "zen"
       "orbstack"
       "safeincloud-password-manager"
       "yaak"
@@ -21,6 +20,7 @@
       "slack"
       "maccy"
       "linear-linear"
+      "helium-browser"
     ];
     masApps = {
       amphetamine = 937984704;

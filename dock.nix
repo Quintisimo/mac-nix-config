@@ -49,7 +49,7 @@ in
           (createBrewCaskApp "1Password")
           (createBrewCaskApp "SafeInCloud Password Manager")
           (createSpacer { })
-          (createBrewCaskApp "Zen")
+          (createBrewCaskApp "Helium")
           (createSpacer { })
           (createBrewCaskApp "Yaak")
         ];
