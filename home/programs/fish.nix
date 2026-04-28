@@ -1,4 +1,9 @@
-{ pkgs, osConfig, ... }:
+{
+  pkgs,
+  config,
+  osConfig,
+  ...
+}:
 {
   config.programs.fish = {
     enable = true;
@@ -25,9 +30,7 @@
     shellAliases = {
       ls = "eza -la";
       cat = "bat";
-      zed = "${
-        builtins.replaceStrings [ " " ] [ "\\ " ] osConfig.folders.hmApps
-      }/Zed.app/Contents/MacOS/cli";
+      zed = config.zedCli;
     };
     plugins = [
       {

@@ -22,6 +22,7 @@
     ];
     userSettings = {
       agent = {
+        sidebar_side = "right";
         default_model = {
           provider = "copilot_chat";
           model = "gpt-4.1";
@@ -64,9 +65,6 @@
         show_sign_in = false;
       };
       collaboration_panel = {
-        button = false;
-      };
-      notification_panel = {
         button = false;
       };
       edit_predictions = {

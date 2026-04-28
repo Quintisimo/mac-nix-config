@@ -1,10 +1,15 @@
-{ pkgs, osConfig, ... }:
+{
+  pkgs,
+  config,
+  osConfig,
+  ...
+}:
 {
   config = {
     services.skhd = {
       enable = true;
       config = ''
-        fn - c : zeditor --zed "${osConfig.folders.hmApps}/Zed.app"  ${osConfig.folders.nix}
+        fn - c : ${config.zedCli} ${osConfig.folders.nix}
       '';
     };
     home.activation.reloadSkhdConfig = ''
