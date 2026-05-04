@@ -95,8 +95,11 @@
                 cd ${osConfig.folders.nix}
                 git fetch origin
 
-                remote_main=origin/main
-                latest_remote_commit_author=$(git log -1 --format='%an' --since=midnight "$remote_main")
+                branch=main
+                latest_local_commit_timestamp=$(git log -1 --format='%ct' "$branch")
+
+                remote=origin/$branch
+                latest_remote_commit_author=$(git log -1 --format='%an' --since="$latest_local_commit_timestamp" "$remote")
 
                 if [[ "$latest_remote_commit_author" != "renovate[bot]" ]]; then
                   exit 0
@@ -112,7 +115,7 @@
                 )
 
                 if [ "$response" == "$action"  ]; then
-                  gh browse "$(git rev-parse "$remote_main")"
+                  gh browse "$(git rev-parse "$remote")"
                 fi
               '';
             };

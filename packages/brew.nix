@@ -19,7 +19,7 @@
       "discord"
       "slack"
       "maccy"
-      "linear-linear"
+      "linear"
       "helium-browser"
     ];
     masApps = {
