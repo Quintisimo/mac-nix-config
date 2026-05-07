@@ -13,9 +13,6 @@
       ]
     )
 
-    # Needed for zed bicep extension
-    dotnetCorePackages.aspnetcore_10_0-bin
-
     # Needed for zed pkl extension
     javaPackages.compiler.temurin-bin.jre-25
 
@@ -25,14 +22,12 @@
     gh
     azure-functions-core-tools
     pnpm
-    cloudflared
     claude-code
     go
     pkl
     uv
     azurite
     delta
-    yq-go
     nil
     nixd
     git-absorb

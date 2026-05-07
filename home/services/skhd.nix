@@ -15,6 +15,9 @@
               "Slack"
               "Discord"
               "Mail"
+              "Linear"
+              "zed"
+              "ghostty"
             ]
           );
       in
