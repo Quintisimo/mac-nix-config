@@ -20,20 +20,22 @@
       "bicep"
       "github-actions"
     ];
+    mutableUserTasks = false;
+    mutableUserSettings = false;
     userSettings = {
-      agent = {
-        sidebar_side = "right";
-        default_model = {
-          provider = "copilot_chat";
-          model = "gpt-4.1";
-        };
-        model_parameters = [ ];
-      };
+      disable_ai = true;
       icon_theme = "Catppuccin Mocha";
       buffer_font_family = osConfig.font;
       ui_font_family = osConfig.font;
       project_panel = {
+        dock = "left";
         auto_fold_dirs = false;
+      };
+      outline_panel = {
+        dock = "left";
+      };
+      git_panel = {
+        dock = "left";
       };
       autosave = "on_focus_change";
       file_types = {
@@ -83,5 +85,33 @@
         };
       };
     };
+    userTasks = [
+      {
+        label = "claude";
+        command = "claude --dangerously-skip-permissions";
+        shell = {
+          program = "sh";
+        };
+        hide = "on_success";
+        show_summary = false;
+        show_command = false;
+        allow_concurrent_runs = true;
+        use_new_terminal = true;
+      }
+    ];
+    userKeymaps = [
+      {
+        context = "Workspace";
+        bindings = {
+          fn-p = [
+            "task::Spawn"
+            {
+              task_name = "claude";
+              reveal_target = "center";
+            }
+          ];
+        };
+      }
+    ];
   };
 }
