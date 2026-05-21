@@ -8,25 +8,25 @@
   config = {
     services.skhd =
       let
-        workAppsAction =
-          action:
-          builtins.concatStringsSep " && " (
-            map (app: "${action} \"${app}\"") [
-              "Slack"
-              "Discord"
-              "Mail"
-              "Linear"
-              "zed"
-              "ghostty"
-            ]
-          );
+        openApps = [
+          "Slack"
+          "Mail"
+          "Linear"
+        ];
+        killApps = [
+          "Discord"
+          "zed"
+          "ghostty"
+        ];
+        appsAction =
+          action: apps: builtins.concatStringsSep " && " (map (app: "${action} \"${app}\"") apps);
       in
       {
         enable = true;
         config = ''
           fn - c : ${config.zedCli} ${osConfig.folders.nix}
-          fn - w : ${workAppsAction "open -a"}
-          fn + shift - w : ${workAppsAction "killall"}
+          fn - w : ${appsAction "open -a" openApps}
+          fn + shift - w : ${appsAction "killall" (openApps ++ killApps)}
         '';
       };
     home.activation.reloadSkhdConfig = ''
