@@ -21,7 +21,7 @@
     eza
     gh
     azure-functions-core-tools
-    pnpm
+    pnpm_10
     claude-code
     go
     pkl
