@@ -43,9 +43,6 @@ in
           (createBrewCaskApp "Discord")
           (createBrewCaskApp "Slack")
           (createBrewCaskApp "Microsoft Teams")
-          (createSystemApp "Messages")
-          (createSpacer { })
-          (createSystemApp "Calendar")
           (createSpacer { })
           (createBrewCaskApp "1Password")
           (createBrewCaskApp "SafeInCloud Password Manager")
@@ -54,6 +51,9 @@ in
           (createWebApp "YouTube Music")
           (createSpacer { })
           (createBrewCaskApp "Yaak")
+          (createSpacer { })
+          (createBrewCaskApp "OpenMTP")
+          (createBrewCaskApp "Affinity")
         ];
         persistent-others = [
           (createFolder folders.nix)
