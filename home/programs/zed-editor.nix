@@ -23,7 +23,20 @@
     mutableUserTasks = false;
     mutableUserSettings = false;
     userSettings = {
-      disable_ai = true;
+      agent_servers = {
+        "claude-acp" = {
+          type = "registry";
+        };
+      };
+      agent = {
+        dock = "right";
+        sidebar_side = "right";
+        default_model = {
+          provider = "copilot_chat";
+          model = "gpt-4.1";
+        };
+        model_parameters = [ ];
+      };
       icon_theme = "Catppuccin Mocha";
       buffer_font_family = osConfig.font;
       ui_font_family = osConfig.font;
@@ -85,33 +98,5 @@
         };
       };
     };
-    userTasks = [
-      {
-        label = "claude";
-        command = "claude --dangerously-skip-permissions";
-        shell = {
-          program = "sh";
-        };
-        hide = "on_success";
-        show_summary = false;
-        show_command = false;
-        allow_concurrent_runs = true;
-        use_new_terminal = true;
-      }
-    ];
-    userKeymaps = [
-      {
-        context = "Workspace";
-        bindings = {
-          fn-p = [
-            "task::Spawn"
-            {
-              task_name = "claude";
-              reveal_target = "center";
-            }
-          ];
-        };
-      }
-    ];
   };
 }
