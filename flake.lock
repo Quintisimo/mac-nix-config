@@ -256,22 +256,6 @@
         "type": "github"
       }
     },
-    "homebrew-xykong": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780471107,
-        "narHash": "sha256-J1yxl54nmXNZtYDVmnICDUGtPq4mQyAT3PD+vnxqGE4=",
-        "owner": "xykong",
-        "repo": "homebrew-tap",
-        "rev": "1c92bf66593cd06089a259c033663cff301fa451",
-        "type": "github"
-      },
-      "original": {
-        "owner": "xykong",
-        "repo": "homebrew-tap",
-        "type": "github"
-      }
-    },
     "mac-app-util": {
       "inputs": {
         "cl-nix-lite": "cl-nix-lite",
@@ -470,7 +454,6 @@
         "homebrew-core": "homebrew-core",
         "homebrew-mssql": "homebrew-mssql",
         "homebrew-vjeantet": "homebrew-vjeantet",
-        "homebrew-xykong": "homebrew-xykong",
         "mac-app-util": "mac-app-util",
         "macos-gitignore": "macos-gitignore",
         "nix-darwin": "nix-darwin",

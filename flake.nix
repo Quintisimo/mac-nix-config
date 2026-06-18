@@ -31,10 +31,6 @@
       url = "github:vjeantet/homebrew-tap";
       flake = false;
     };
-    homebrew-xykong = {
-      url = "github:xykong/homebrew-tap";
-      flake = false;
-    };
     macos-gitignore = {
       url = "github:github/gitignore";
       flake = false;
@@ -53,7 +49,6 @@
       homebrew-cask,
       homebrew-mssql,
       homebrew-vjeantet,
-      homebrew-xykong,
       macos-gitignore,
       ...
     }:
@@ -120,13 +115,20 @@
                 # User owning the Homebrew prefix
                 user = username;
 
+                trust = {
+                  formulae = [
+                    "microsoft/mssql/msodbcsql18"
+                    "microsoft/mssql/mssql-tools18"
+                    "vjeantet/tap/alerter"
+                  ];
+                };
+
                 # Optional: Declarative tap management
                 taps = {
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
                   "microsoft/homebrew-mssql" = homebrew-mssql;
                   "vjeantet/homebrew-tap" = homebrew-vjeantet;
-                  "xykong/homebrew-tap" = homebrew-xykong;
                 };
 
                 # Optional: Enable fully-declarative tap management
