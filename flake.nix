@@ -35,6 +35,10 @@
       url = "github:github/gitignore";
       flake = false;
     };
+    ponytail = {
+      url = "github:DietrichGebert/ponytail";
+      flake = false;
+    };
   };
 
   outputs =
@@ -50,6 +54,7 @@
       homebrew-mssql,
       homebrew-vjeantet,
       macos-gitignore,
+      ponytail,
       ...
     }:
     {
@@ -97,7 +102,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit macos-gitignore; };
+              home-manager.extraSpecialArgs = { inherit macos-gitignore ponytail; };
               home-manager.sharedModules = [
                 mac-app-util.homeManagerModules.default
               ];

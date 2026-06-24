@@ -22,7 +22,6 @@
     gh
     azure-functions-core-tools
     pnpm_10
-    claude-code
     go
     pkl
     uv
