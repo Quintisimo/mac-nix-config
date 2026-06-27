@@ -14,6 +14,7 @@
           };
         }
       ];
+      lfs.enable = true;
       settings = {
         core = {
           pager = "delta";
