@@ -22,7 +22,6 @@
       "linear"
       "helium-browser"
       "affinity"
-      "openmtp"
     ];
     masApps = {
       amphetamine = 937984704;

@@ -52,7 +52,7 @@ in
           (createSpacer { })
           (createBrewCaskApp "Yaak")
           (createSpacer { })
-          (createBrewCaskApp "OpenMTP")
+          (createSystemApp "Photos")
           (createBrewCaskApp "Affinity")
         ];
         persistent-others = [
