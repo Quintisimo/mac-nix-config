@@ -6,6 +6,9 @@
       ponytail = ponytail;
     };
     settings = {
+      permissions = {
+        defaultMode = "bypassPermissions";
+      };
       enabledPlugins = {
         "ponytail@ponytail" = true;
       };
