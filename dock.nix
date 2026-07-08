@@ -51,6 +51,7 @@ in
           (createWebApp "YouTube Music")
           (createSpacer { })
           (createBrewCaskApp "Yaak")
+          (createBrewCaskApp "TablePlus")
           (createSpacer { })
           (createSystemApp "Photos")
           (createBrewCaskApp "Affinity")
