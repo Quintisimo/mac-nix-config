@@ -11,6 +11,7 @@
     interactiveShellInit = ''
       set -g fish_greeting
       set -gx EDITOR vim
+      set -gx NODE_NO_WARNINGS 1
       fish_vi_key_bindings
       fish_add_path $HOME/go/bin
       source ${osConfig.age.secrets.fish_env.path}
