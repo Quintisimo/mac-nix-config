@@ -23,6 +23,8 @@
       "helium-browser"
       "affinity"
       "tableplus"
+      "zed"
+      "ghostty"
     ];
     masApps = {
       amphetamine = 937984704;

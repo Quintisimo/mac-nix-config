@@ -1,6 +1,5 @@
 {
   pkgs,
-  config,
   osConfig,
   ...
 }:
@@ -24,7 +23,7 @@
       {
         enable = true;
         config = ''
-          fn - c : ${config.zedCli} ${osConfig.folders.nix}
+          fn - c : zed ${osConfig.folders.nix}
           fn - w : ${appsAction "open -a" openApps}
           fn + shift - w : ${appsAction "killall" (openApps ++ killApps)}
         '';

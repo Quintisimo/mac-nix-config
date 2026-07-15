@@ -12,7 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix.url = "github:ryantm/agenix";
-    mac-app-util.url = "github:hraban/mac-app-util";
     darwin-custom-icons.url = "github:ryanccn/nix-darwin-custom-icons";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     homebrew-core = {
@@ -46,7 +45,6 @@
       nix-darwin,
       home-manager,
       agenix,
-      mac-app-util,
       darwin-custom-icons,
       nix-homebrew,
       homebrew-core,
@@ -85,7 +83,6 @@
               };
             }
             darwin-custom-icons.darwinModules.default
-            mac-app-util.darwinModules.default
             agenix.nixosModules.default
             {
               age = {
@@ -103,9 +100,6 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit macos-gitignore ponytail; };
-              home-manager.sharedModules = [
-                mac-app-util.homeManagerModules.default
-              ];
               home-manager.users."${username}" = ./home;
             }
             nix-homebrew.darwinModules.nix-homebrew

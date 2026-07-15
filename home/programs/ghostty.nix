@@ -1,8 +1,8 @@
-{ pkgs, osConfig, ... }:
+{ osConfig, ... }:
 {
   config.programs.ghostty = {
     enable = true;
-    package = pkgs.ghostty-bin;
+    package = null;
     enableFishIntegration = true;
     settings = {
       theme = "Catppuccin Mocha";

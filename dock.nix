@@ -24,7 +24,6 @@ in
   config =
     let
       createBrewCaskApp = createApp "/Applications/";
-      createHomeManagerApp = createApp "${config.folders.hmApps}/";
       createWebApp = createApp "${config.folders.webApps}/";
       createSystemApp = createApp "/System/Applications/";
     in
@@ -34,8 +33,8 @@ in
         wvous-br-corner = 2; # Mission Control
         show-recents = false;
         persistent-apps = [
-          (createHomeManagerApp "Zed")
-          (createHomeManagerApp "Ghostty")
+          (createBrewCaskApp "Zed")
+          (createBrewCaskApp "Ghostty")
           (createBrewCaskApp "OrbStack")
           (createBrewCaskApp "Linear")
           (createSpacer { })

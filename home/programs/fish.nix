@@ -32,7 +32,6 @@
       ls = "eza -la";
       cat = "bat";
       secret = "openssl rand -hex 32";
-      zed = config.zedCli;
     };
     plugins = [
       {
