@@ -1,6 +1,5 @@
 {
   pkgs,
-  config,
   osConfig,
   ...
 }:
@@ -9,12 +8,14 @@
     enable = true;
     generateCompletions = true;
     interactiveShellInit = ''
-      set -g fish_greeting
-      set -gx EDITOR vim
-      set -gx NODE_NO_WARNINGS 1
+      set -x fish_greeting
+      set -x EDITOR vim
+      set -x NODE_NO_WARNINGS 1
+
+      source ${osConfig.age.secrets.fish_env.path}
+
       fish_vi_key_bindings
       fish_add_path $HOME/go/bin
-      source ${osConfig.age.secrets.fish_env.path}
     '';
     functions = {
       # Based on https://github.com/avimehenwal/git-refresh
