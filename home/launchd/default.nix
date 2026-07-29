@@ -99,7 +99,13 @@
                 latest_local_commit_timestamp=$(git log -1 --format='%ct' "$branch")
 
                 remote=origin/$branch
-                latest_remote_commit_author=$(git log -1 --format='%an' --since="$latest_local_commit_timestamp" "$remote")
+                latest_remote_commit_timestamp=$(git log -1 --format='%ct' "$remote")
+
+                if [[ "$latest_remote_commit_timestamp" -le "$latest_local_commit_timestamp" ]]; then
+                  exit 0
+                fi
+
+                latest_remote_commit_author=$(git log -1 --format='%an' "$remote")
 
                 if [[ "$latest_remote_commit_author" != "renovate[bot]" ]]; then
                   exit 0
