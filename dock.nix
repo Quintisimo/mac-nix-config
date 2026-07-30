@@ -44,7 +44,7 @@ in
           (createBrewCaskApp "Microsoft Teams")
           (createSpacer { })
           (createBrewCaskApp "1Password")
-          (createBrewCaskApp "SafeInCloud Password Manager")
+          (createBrewCaskApp "Safe")
           (createSpacer { })
           (createBrewCaskApp "Helium")
           (createWebApp "YouTube Music")

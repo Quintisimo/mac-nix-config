@@ -11,7 +11,6 @@
     casks = [
       "microsoft-teams"
       "orbstack"
-      "safeincloud-password-manager"
       "yaak"
       "1password"
       "wifiman"
@@ -29,6 +28,7 @@
     masApps = {
       amphetamine = 937984704;
       numbers = 409203825;
+      passwords-codes-safe = 883070818;
     };
     brews = [
       "unixodbc"
