@@ -22,7 +22,7 @@
       "linear"
       "helium-browser"
       "affinity"
-      "tableplus"
+      "tablepro"
       "zed"
       "ghostty"
     ];
