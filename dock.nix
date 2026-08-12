@@ -54,6 +54,7 @@ in
           (createSpacer { })
           (createSystemApp "Photos")
           (createBrewCaskApp "Affinity")
+          (createBrewCaskApp "ImageOptim")
         ];
         persistent-others = [
           (createFolder folders.nix)

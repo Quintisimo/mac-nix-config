@@ -24,6 +24,7 @@
       "tablepro"
       "zed"
       "ghostty"
+      "imageoptim"
     ];
     masApps = {
       amphetamine = 937984704;
