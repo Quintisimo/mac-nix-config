@@ -1,6 +1,7 @@
 {
   pkgs,
   osConfig,
+  lib,
   ...
 }:
 {
@@ -17,15 +18,13 @@
           "zed"
           "ghostty"
         ];
-        appsAction =
-          action: apps: builtins.concatStringsSep " && " (map (app: "${action} \"${app}\"") apps);
       in
       {
         enable = true;
         config = ''
           fn - c : zed ${osConfig.folders.nix}
-          fn - w : ${appsAction "open -a" openApps}
-          fn + shift - w : ${appsAction "killall" (openApps ++ killApps)}
+          fn - w : ${lib.join " && " (map (app: "open -a \"${app}\"") openApps)}
+          fn + shift - w : killall ${lib.join " " (openApps ++ killApps)}
         '';
       };
     home.activation.reloadSkhdConfig = ''
