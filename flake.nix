@@ -55,52 +55,43 @@
       ponytail,
       ...
     }:
-    {
-      # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#macbook
-      darwinConfigurations."macbook" =
+    let
+      darwinConfig =
+        {
+          username,
+          email,
+          isWork,
+        }:
         let
-          username = "quintisimo";
           home = "/Users/${username}";
-          userApps = "${home}/Applications";
-          github = "${home}/Github";
         in
         nix-darwin.lib.darwinSystem {
           modules = [
             ./config.nix
             {
               username = username;
-              font = "Maple Mono NF CN";
               home = home;
-              folders = {
-                github = github;
-                downloads = "${home}/Downloads";
-                personal = "${github}/personal";
-                work = "${github}/work";
-                nix = "/etc/nix-darwin";
-                hmApps = "${userApps}/Home Manager Apps";
-                webApps = "${userApps}/Chromium Apps.localized";
-              };
+              isWork = isWork;
             }
             darwin-custom-icons.darwinModules.default
             agenix.nixosModules.default
             {
               age = {
                 identityPaths = [ "${home}/.ssh/id_ed25519" ];
-                secrets = {
-                  fish_env = {
-                    file = ./secrets/secrets.age;
-                    owner = username;
-                  };
+                secrets.fish_env = {
+                  file = ./secrets/secrets.age;
+                  owner = username;
                 };
               };
             }
             home-manager.darwinModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit macos-gitignore ponytail; };
-              home-manager.users."${username}" = ./home;
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit macos-gitignore ponytail email; };
+                users."${username}" = ./home;
+              };
             }
             nix-homebrew.darwinModules.nix-homebrew
             {
@@ -114,13 +105,11 @@
                 # User owning the Homebrew prefix
                 user = username;
 
-                trust = {
-                  formulae = [
-                    "microsoft/mssql/msodbcsql18"
-                    "microsoft/mssql/mssql-tools18"
-                    "vjeantet/tap/alerter"
-                  ];
-                };
+                trust.formulae = [
+                  "microsoft/mssql/msodbcsql18"
+                  "microsoft/mssql/mssql-tools18"
+                  "vjeantet/tap/alerter"
+                ];
 
                 # Optional: Declarative tap management
                 taps = {
@@ -138,5 +127,26 @@
             }
           ];
         };
+    in
+    {
+      # Build darwin flake using:
+      # $ darwin-rebuild build --flake .#personal
+      darwinConfigurations."personal" =
+        let
+          username = "quintisimo";
+          email = "quintuscardozo13@gmail.com";
+          isWork = false;
+        in
+        darwinConfig { inherit username email isWork; };
+
+      # Build darwin flake using:
+      # $ darwin-rebuild build --flake .#work
+      darwinConfigurations."work" =
+        let
+          username = "qcardozo";
+          email = "qcardozo@getlegaltech.com";
+          isWork = true;
+        in
+        darwinConfig { inherit username email isWork; };
     };
 }

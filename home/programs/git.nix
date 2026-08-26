@@ -1,19 +1,13 @@
-{ osConfig, macos-gitignore, ... }:
+{
+  email,
+  macos-gitignore,
+  ...
+}:
 {
   config = {
     xdg.configFile."git/ignore".source = "${macos-gitignore}/Global/macOS.gitignore";
     programs.git = {
       enable = true;
-      includes = [
-        {
-          condition = "gitdir:${osConfig.folders.work}/";
-          contents = {
-            user = {
-              email = "qcardozo@getlegaltech.com";
-            };
-          };
-        }
-      ];
       lfs.enable = true;
       settings = {
         core = {
@@ -21,7 +15,7 @@
         };
         user = {
           name = "Quintus Cardozo";
-          email = "quintuscardozo13@gmail.com";
+          email = email;
         };
         init = {
           defaultBranch = "main";

@@ -18,13 +18,16 @@
           "zed"
           "ghostty"
         ];
+        workShortcuts = ''
+          fn - w : ${lib.join " && " (map (app: "open -a \"${app}\"") openApps)}
+          fn + shift - w : killall ${lib.join " " (openApps ++ killApps)}
+        '';
       in
       {
         enable = true;
         config = ''
           fn - c : zed ${osConfig.folders.nix}
-          fn - w : ${lib.join " && " (map (app: "open -a \"${app}\"") openApps)}
-          fn + shift - w : killall ${lib.join " " (openApps ++ killApps)}
+          ${if osConfig.isWork then workShortcuts else ""}
         '';
       };
     home.activation.reloadSkhdConfig = ''

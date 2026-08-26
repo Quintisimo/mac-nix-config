@@ -8,7 +8,7 @@
 
 - Setup nix-darwin using `sudo nix run nix-darwin/master#darwin-rebuild -- switch`
 
-- Apply changes using `sudo darwin-rebuild switch`
+- Apply changes using `sudo darwin-rebuild switch --flake .#CONFIG_NAME`
 
 ## Adding/Editing secrets
 

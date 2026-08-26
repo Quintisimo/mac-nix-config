@@ -1,4 +1,4 @@
-{ osConfig, ... }:
+{ config, ... }:
 {
   config.programs.ghostty = {
     enable = true;
@@ -6,7 +6,7 @@
     enableFishIntegration = true;
     settings = {
       theme = "Catppuccin Mocha";
-      font-family = osConfig.font;
+      font-family = config.font;
     };
   };
 }

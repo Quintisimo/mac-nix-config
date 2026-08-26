@@ -19,13 +19,20 @@
       type = lib.types.str;
       description = "The home directory of the primary user on this system.";
     };
-    font = lib.mkOption {
-      type = lib.types.str;
-      description = "The font family to use for terminal and editor applications.";
+    isWork = lib.mkOption {
+      type = lib.types.bool;
+      description = "Whether this is a work machine.";
     };
     folders = lib.mkOption {
       type = lib.types.attrs;
       description = "The folders in the dock to be used for the persistent-others section.";
+      default = {
+        nix = "/etc/nix-darwin";
+        github = "${config.home}/Github";
+        downloads = "${config.home}/Downloads";
+        hmApps = "${config.home}/Applications/Home Manager Apps";
+        webApps = "${config.home}/Applications/Chromium Apps.localized";
+      };
     };
   };
 
@@ -45,11 +52,7 @@
           icon = ./icons/nix.png;
         }
         {
-          path = config.folders.personal;
-          icon = ./icons/github.png;
-        }
-        {
-          path = config.folders.work;
+          path = config.folders.github;
           icon = ./icons/github.png;
         }
         {
@@ -111,5 +114,4 @@
     # Add ability to used TouchID for sudo authentication
     security.pam.services.sudo_local.touchIdAuth = true;
   };
-
 }

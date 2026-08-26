@@ -13,9 +13,10 @@
           {
             text,
             runtimeInputs ? [ ],
+            enable,
           }:
           {
-            enable = true;
+            enable = enable;
             config = {
               RunAtLoad = true;
               StandardErrorPath = "${osConfig.home}/Library/Logs/${name}/${name}.error.log";
@@ -53,6 +54,7 @@
           in
           {
             dependabot-notifications = {
+              enable = osConfig.isWork;
               runtimeInputs = [
                 pkgs.gh
               ];
@@ -88,6 +90,7 @@
               '';
             };
             flake-lock-updated = {
+              enable = true;
               runtimeInputs = [
                 pkgs.git
               ];
