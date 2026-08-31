@@ -6,7 +6,7 @@
 
 - Clone the repo into `/etc/nix-darwin`
 
-- Setup nix-darwin using `sudo nix run nix-darwin/master#darwin-rebuild -- switch`
+- Setup nix-darwin using `sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .#CONFIG_NAME`
 
 - Apply changes using `sudo darwin-rebuild switch --flake .#CONFIG_NAME`
 
