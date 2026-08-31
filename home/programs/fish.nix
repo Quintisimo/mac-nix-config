@@ -12,7 +12,7 @@
       set -x EDITOR vim
       set -x NODE_NO_WARNINGS 1
 
-      source ${osConfig.age.secrets.fish_env.path}
+      ${if osConfig.isWork then "source ${osConfig.age.secrets.fish_env.path}" else ""}
 
       fish_vi_key_bindings
       fish_add_path $HOME/go/bin

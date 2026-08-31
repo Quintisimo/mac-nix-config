@@ -74,16 +74,6 @@
               isWork = isWork;
             }
             darwin-custom-icons.darwinModules.default
-            agenix.nixosModules.default
-            {
-              age = {
-                identityPaths = [ "${home}/.ssh/id_ed25519" ];
-                secrets.fish_env = {
-                  file = ./secrets/secrets.age;
-                  owner = username;
-                };
-              };
-            }
             home-manager.darwinModules.home-manager
             {
               home-manager = {
@@ -125,7 +115,24 @@
                 mutableTaps = false;
               };
             }
-          ];
+          ]
+          ++ (
+            if isWork then
+              [
+                agenix.nixosModules.default
+                {
+                  age = {
+                    identityPaths = [ "${home}/.ssh/id_ed25519" ];
+                    secrets.fish_env = {
+                      file = ./secrets/secrets.age;
+                      owner = username;
+                    };
+                  };
+                }
+              ]
+            else
+              [ ]
+          );
         };
     in
     {
