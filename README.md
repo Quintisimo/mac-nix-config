@@ -1,6 +1,8 @@
 # Nix Darwin
 
-- Install nix using `curl -fsSL https://install.determinate.systems/nix | sh -s -- install`
+- Install nix how [nix-darwin recommends](https://github.com/nix-darwin/nix-darwin?tab=readme-ov-file#prerequisites)
+
+- Install xcode command line tools using `xcode-select --install`
 
 - Add ssh key to `~/.ssh`
 

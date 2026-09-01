@@ -26,13 +26,13 @@
       {
         enable = true;
         config = ''
-          fn - c : zed ${osConfig.folders.nix}
+          fn - c : open -a "Zed" "${osConfig.folders.nix}"
           ${if osConfig.isWork then workShortcuts else ""}
         '';
       };
-    home.activation.reloadSkhdConfig = ''
+    home.activation.reloadSkhdConfig = lib.hm.dag.entryAfter [ "setupLaunchAgents" ] ''
       echo "Reloading skhd config..."
-      ${pkgs.skhd}/bin/skhd -r
+      ${pkgs.skhd}/bin/skhd -r || true
     '';
   };
 }
