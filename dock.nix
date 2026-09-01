@@ -1,7 +1,7 @@
 { config, ... }:
 let
   folders = config.folders;
-  createApp = path: name: {
+  getFullAppPath = path: name: {
     app = "${path}${name}.app";
   };
   createFolder = folder: {
@@ -23,34 +23,36 @@ in
 {
   config =
     let
-      createBrewCaskApp = createApp "/Applications/";
-      createWebApp = createApp "${config.folders.webApps}/";
-      createSystemApp = createApp "/System/Applications/";
+      createApp = getFullAppPath "/Applications/";
+      createWebApp = getFullAppPath "${config.folders.webApps}/";
+      createSystemApp = getFullAppPath "/System/Applications/";
     in
     {
       system.defaults.dock =
         let
           workApps = [
             (createSystemApp "Mail")
-            (createBrewCaskApp "Discord")
-            (createBrewCaskApp "Linear")
-            (createBrewCaskApp "Slack")
-            (createBrewCaskApp "Microsoft Teams")
+            (createApp "Discord")
+            (createApp "Linear")
+            (createApp "Slack")
+            (createApp "Microsoft Teams")
             (createSpacer { })
-            (createBrewCaskApp "1Password")
+            (createApp "Microsoft Edge")
             (createSpacer { })
-            (createBrewCaskApp "Yaak")
-            (createBrewCaskApp "TablePro")
+            (createApp "1Password")
+            (createSpacer { })
+            (createApp "Yaak")
+            (createApp "TablePro")
           ];
           personalApps = [
-            (createBrewCaskApp "Helium")
+            (createApp "Helium")
             (createWebApp "YouTube Music")
             (createSpacer { })
-            (createBrewCaskApp "Safe")
+            (createApp "Safe")
             (createSpacer { })
             (createSystemApp "Photos")
-            (createBrewCaskApp "Affinity")
-            (createBrewCaskApp "ImageOptim")
+            (createApp "Affinity")
+            (createApp "ImageOptim")
           ];
         in
         {
@@ -58,14 +60,13 @@ in
           wvous-br-corner = 2; # Mission Control
           show-recents = false;
           persistent-apps = [
-            (createBrewCaskApp "Zed")
-            (createBrewCaskApp "Ghostty")
-            (createBrewCaskApp "OrbStack")
+            (createApp "Zed")
+            (createApp "Ghostty")
+            (createApp "OrbStack")
             (createSpacer { })
           ]
           ++ (if config.isWork then workApps else personalApps);
           persistent-others = [
-            (createFolder folders.nix)
             (createFolder folders.github)
             (createFolder folders.downloads)
           ];

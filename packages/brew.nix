@@ -43,11 +43,13 @@
         "ghostty"
       ]
       ++ (if config.isWork then workCasks else personalCasks);
-      masApps = {
-        amphetamine = 937984704;
-        numbers = 409203825;
-        passwords-codes-safe = 883070818;
-      };
+      masApps =
+        if config.isWork then
+          { }
+        else
+          {
+            passwords-codes-safe = 883070818;
+          };
       brews = [
         "alerter"
       ]

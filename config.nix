@@ -95,7 +95,7 @@
       knownUsers = [ config.username ];
       users.${config.username} = {
         name = config.username;
-        uid = 501;
+        uid = if config.isWork then 502 else 501;
         home = config.home;
         shell = pkgs.fish;
       };
